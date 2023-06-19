@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.under-box {
+  width: var(--width);
+  height: var(--height);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #eee;
+  border-radius: 4px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  animation: moveRight 0.2s linear forwards;
+}
+
+.under-menu {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(auto, 1fr);
+  gap: 10px;
+}
+
+@keyframes moveRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
