@@ -1,11 +1,5 @@
 @import "basic";
 
-.container {
-  position: relative;
-  @include sizing(100%, auto);
-  font-family: $font-roboto;
-  overflow-x: hidden;
-}
 // start of header
 header {
   @include sizing(100%, 90vh);
