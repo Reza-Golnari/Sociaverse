@@ -16,7 +16,7 @@ header {
 .right-box {
   @include sizing(50%, 100%);
   clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
-  background-image: url(../pic/122-1500x800.jpg);
+  background-image: url(../pic/Header.jpg);
   background-size: cover;
   background-position: 20%;
 }
