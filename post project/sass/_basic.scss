@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// color
+
+$white: #ffffff;
+$light: #ecf0f1;
+$light-blue: #1890ff;
+$light-green: #0be881;
+$light-yellow: #ffcf00;
+$light-red: #ff4e4f;
+$dark-light: #25282c;
+$dark: #191c20;
+$very-dark: #111417;
+
+// font
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../font/Roboto-Medium.ttf") format("ttf");
+}
+
+$font-roboto: "Roboto";
+
+// mixin
+
+@mixin flex($direction: row, $align: center, $justify: center) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@mixin grid($template-column, $template-row) {
+  display: grid;
+  grid-template-columns: $template-column;
+  grid-template-rows: $template-row;
+}
+
+@mixin sizing($width: 100px, $height: 100px) {
+  width: $width;
+  height: $height;
+}
