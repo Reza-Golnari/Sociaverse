@@ -79,11 +79,32 @@ header {
     }
   }
   //   end of logo
+  // start of search box
+  .search-box {
+    @include flex(row, center, center);
+    column-gap: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: $light;
+
+    .search {
+      all: unset;
+      font-weight: 500;
+      font-size: 1.1rem;
+      color: rgba($very-dark, 0.7);
+    }
+
+    .search-icon {
+      font-size: 1.2rem;
+      padding: 3px;
+      cursor: pointer;
+    }
+  }
+  // end of search box
   // start of menu
   .header-menu {
     @include flex(row, center, center);
     column-gap: 30px;
-    margin-right: 20px;
     list-style-type: none;
 
     &-link {
@@ -121,6 +142,13 @@ header {
     }
   }
   // end of menu
+  // start of log in
+  .logIn-box {
+    @include sizing(100px, auto);
+    margin-right: 20px;
+    padding: 10px;
+  }
+  // end of log in
 }
 // end of nav
 
