@@ -14,7 +14,7 @@
   border-radius: 5px;
   box-shadow: 0 2px 15px rgba($very-dark, 0.5);
   padding: 20px;
-
+  display: none;
   //   start of form
   &-form {
     @include sizing(350px, 80%);
@@ -33,7 +33,8 @@
       border-radius: 3px;
     }
 
-    .password-box {
+    .password-box,
+    .password-box-check {
       position: relative;
     }
 
@@ -45,15 +46,6 @@
       cursor: pointer;
       color: $light-blue;
     }
-  }
-
-  .title-box {
-    width: 100%;
-    text-align: center;
-    color: $light-green;
-    font-size: 1.5rem;
-    letter-spacing: 2px;
-    margin-top: 20px;
   }
 
   .log-in-btn {
@@ -71,16 +63,59 @@
     }
   }
 
-  .go-sign-up {
-    font-weight: 500;
-    color: rgba($very-dark, 0.9);
-
-    span {
-      color: $light-green;
-      cursor: pointer;
-      text-decoration: underline;
-    }
-  }
   // end of form
 }
+.go-sign-up,
+.go-log-in {
+  font-weight: 500;
+  color: rgba($very-dark, 0.9);
+
+  span {
+    color: $light-green;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+// start of title
+.title {
+  width: 100%;
+  text-align: center;
+  color: $light-green;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  margin-top: 20px;
+}
+// end of title
 // end of log in box
+// start of sign up box
+.sign-up {
+  @include sizing(500px, 450px);
+  background-color: $light-blue;
+  border-radius: 5px;
+  box-shadow: 0 2px 15px rgba($very-dark, 0.5);
+  padding: 20px;
+
+  .sign-up-btn {
+    all: unset;
+    margin: 10px 0;
+    font-size: 1.2rem;
+    width: 350px;
+    padding: 10px;
+    background-color: $light;
+    border-radius: 3px;
+
+    text-align: center;
+    font-weight: 900;
+    border: 2px solid $light-green;
+    color: $light-green;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: $light-green;
+      color: $light-blue;
+    }
+  }
+}
+// end of sign up box
