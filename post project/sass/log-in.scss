@@ -1,0 +1,18 @@
+@import "basic";
+
+.container {
+  height: 100vh;
+  overflow: hidden;
+  background-color: $light;
+  @include flex();
+}
+
+// start of log in box
+.log-in {
+  @include sizing(500px, 500px);
+  background-color: $light-blue;
+  border-radius: 5px;
+  box-shadow: 0 2px 15px rgba($very-dark, 0.5);
+  padding: 20px;
+}
+// end of log in box
