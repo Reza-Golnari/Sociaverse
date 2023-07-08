@@ -119,3 +119,53 @@
   }
 }
 // end of sign up box
+// start of alert
+.alert {
+  position: absolute;
+  top: 20px;
+  opacity: 0;
+  left: -500px;
+  @include sizing(350px, auto);
+  padding: 20px;
+  background-color: $light-yellow;
+  border-radius: 10px;
+  filter: drop-shadow(0 2px 10px $light-yellow);
+
+  &-title {
+    color: $light-red;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+  }
+
+  .fas {
+    color: $light-red;
+  }
+
+  &-text {
+    font-weight: 500;
+  }
+
+  &.active {
+    animation: showAlert 5s ease-in-out backwards;
+  }
+}
+
+@keyframes showAlert {
+  0% {
+    opacity: 0;
+    left: -500px;
+  }
+  20% {
+    opacity: 1;
+    left: 20px;
+  }
+  80% {
+    opacity: 1;
+    left: 20px;
+  }
+  100% {
+    opacity: 0;
+    left: -500px;
+  }
+}
+// end of alert
