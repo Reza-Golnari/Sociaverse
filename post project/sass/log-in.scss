@@ -70,6 +70,17 @@
       color: $light-blue;
     }
   }
+
+  .go-sign-up {
+    font-weight: 500;
+    color: rgba($very-dark, 0.9);
+
+    span {
+      color: $light-green;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
   // end of form
 }
 // end of log in box
