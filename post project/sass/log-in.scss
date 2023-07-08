@@ -9,10 +9,67 @@
 
 // start of log in box
 .log-in {
-  @include sizing(500px, 500px);
+  @include sizing(500px, 400px);
   background-color: $light-blue;
   border-radius: 5px;
   box-shadow: 0 2px 15px rgba($very-dark, 0.5);
   padding: 20px;
+
+  //   start of form
+  &-form {
+    @include sizing(350px, 80%);
+    margin: 0 auto;
+    @include flex(column, center, center);
+    row-gap: 10px;
+
+    input,
+    button {
+      all: unset;
+      margin: 10px 0;
+      font-size: 1.2rem;
+      width: 350px;
+      padding: 10px;
+      background-color: $light;
+      border-radius: 3px;
+    }
+
+    .password-box {
+      position: relative;
+    }
+
+    #pass-icon {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: $light-blue;
+    }
+  }
+
+  .title-box {
+    width: 100%;
+    text-align: center;
+    color: $light-green;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    margin-top: 20px;
+  }
+
+  .log-in-btn {
+    text-align: center;
+    font-weight: 900;
+    border: 2px solid $light-green;
+    color: $light-green;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: $light-green;
+      color: $light-blue;
+    }
+  }
+  // end of form
 }
 // end of log in box
