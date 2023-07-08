@@ -37,10 +37,10 @@
               autocomplete="off"
               placeholder="Password"
             />
-            <i id="pass-icon" class="fas fa-eye"></i>
+            <i class="fas fa-eye eye-icon"></i>
           </div>
           <div class="btn-box">
-            <button class="log-in-btn" type="submit">Log In</button>
+            <button class="log-in-btn" type="button">Log In</button>
           </div>
           <p class="go-sign-up">
             Don't have an account? <span class="sign-up-link">Click Here</span>
@@ -71,20 +71,20 @@
               autocomplete="off"
               placeholder="Password"
             />
-            <i id="pass-icon" class="fas fa-eye"></i>
+            <i class="fas fa-eye eye-icon"></i>
           </div>
           <div class="password-box-check">
             <input
               id="password-check"
-              type="password-check"
+              type="password"
               name="password-check"
               autocomplete="off"
               placeholder="Repeat Password"
             />
-            <i id="pass-icon" class="fas fa-eye"></i>
+            <i class="fas fa-eye eye-icon"></i>
           </div>
           <div class="btn-box">
-            <button class="sign-up-btn" type="submit">Sign Up</button>
+            <button class="sign-up-btn" type="button">Sign Up</button>
           </div>
           <p class="go-log-in">
             Do you have an account? <span class="log-in-link">Click Here</span>
@@ -93,18 +93,23 @@
       </section>
       <!-- end of sign up box -->
       <!-- start of alert -->
-      <div class="alert active">
+      <div class="alert">
         <h3 class="alert-title">Pay Attention!</h3>
         <p class="alert-text">
           <i class="fas fa-thumbtack"></i> Username must have at least 3 letters
           and maximum 12 letters <br />
           <br />
           <i class="fas fa-thumbtack"></i> Password must be more than 8
-          characters and less than 15 characters
+          characters and less than 15 characters <br />
+          <br />
+          <i class="fas fa-thumbtack"></i> Check Password
         </p>
       </div>
       <!-- end of alert -->
     </div>
     <!-- end of container -->
+    <!-- scripts -->
+    <!-- link js -->
+    <script src="./js/log-in.js"></script>
   </body>
 </html>

@@ -14,7 +14,6 @@
   border-radius: 5px;
   box-shadow: 0 2px 15px rgba($very-dark, 0.5);
   padding: 20px;
-  display: none;
   //   start of form
   &-form {
     @include sizing(350px, 80%);
@@ -38,7 +37,7 @@
       position: relative;
     }
 
-    #pass-icon {
+    .eye-icon {
       position: absolute;
       top: 50%;
       right: 10px;
@@ -94,6 +93,7 @@
   border-radius: 5px;
   box-shadow: 0 2px 15px rgba($very-dark, 0.5);
   padding: 20px;
+  display: none;
 
   .sign-up-btn {
     all: unset;
