@@ -12,6 +12,8 @@ const alert = $.querySelector(".alert");
 const goLogIn = $.querySelector(".go-log-in");
 const loginForm = $.querySelector(".log-in");
 const signupForm = $.querySelector(".sign-up");
+const email = $.querySelector("#email");
+const regexEmail = /[a-zA-Z0-9.-]+@[a-z-]+\.[a-z]{2,3}/;
 
 logInBtn.addEventListener("click", logInBtnHandler);
 
@@ -21,6 +23,7 @@ async function logInBtnHandler() {
     let data = {
       name: userName.value,
       password: userPass.value,
+      email: email.value,
     };
 
     let header = {
@@ -69,10 +72,12 @@ function showAlert() {
 
 signUpBtn.addEventListener("click", signUpBtnHandler);
 
+// sign up
 async function signUpBtnHandler() {
   if (
     checkInputs(signUserName, signUserPass) &&
-    repeatPass.value == signUserPass.value
+    repeatPass.value == signUserPass.value &&
+    email.value.match(regexEmail)
   ) {
     let data = {
       name: signUserName.value,
@@ -104,6 +109,7 @@ function reset() {
   repeatPass.value = "";
   signUserName.value = "";
   signUserPass.value = "";
+  email.value = "";
 }
 
 // icon
