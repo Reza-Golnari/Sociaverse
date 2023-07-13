@@ -242,3 +242,33 @@
   }
 }
 // end of alert
+// Responsive
+@media screen and (max-width: 700px) {
+  .log-in,
+  .sign-up,
+  .code-box {
+    width: 350px;
+
+    form {
+      width: 300px;
+
+      input,
+      button,
+      .sign-up-btn {
+        width: 300px;
+      }
+    }
+  }
+
+  .alert {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .log-in,
+  .sign-up,
+  .code-box {
+    transform: scale(0.8);
+  }
+}
