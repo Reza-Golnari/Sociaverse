@@ -29,19 +29,6 @@ class ExploreView(APIView):
     - 200: Successful response with a list of posts and users.
     """
 
-    @extend_schema(
-        description="Retrieve posts and users",
-
-        parameters=[
-            {
-                'name': 'search',
-                'required': False,
-                'type': 'string',
-                'in': 'query',
-                'description': 'Search term for filtering posts and users',
-            }
-        ],
-    )
     def get(self, request):
         """
         Get posts and users.
