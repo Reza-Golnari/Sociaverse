@@ -66,7 +66,7 @@ class UserRegisterView(APIView):
             return Response({'message': 'we sent you a 5 digits code'}, status=status.HTTP_200_OK)
         else:
             # Return an error response with the serializer errors
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'test error':'its a test'})
 
 
 class UserVerifyView(APIView):
