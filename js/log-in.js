@@ -82,8 +82,29 @@ function signUpBtnHandler() {
     repeatPass.value == signUserPass.value &&
     email.value.match(regexEmail)
   ) {
-    codeBox.style.display = "block";
-    signupForm.style.display = "none";
+    // codeBox.style.display = "block";
+    // signupForm.style.display = "none";
+
+    let url = "http://127.0.0.1:8000//accounts/register/";
+
+    let data = {
+      username: signUserName.value,
+      email: email.value,
+      password: signUserPass.value,
+      password2: repeatPass.value,
+    };
+
+    fetch(url, {
+      mode: "no-cors",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: data,
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
   } else {
     showAlert();
   }
