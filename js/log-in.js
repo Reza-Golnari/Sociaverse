@@ -141,33 +141,20 @@ function signUpBtnHandler() {
 
     let xhr = new XMLHttpRequest();
     xhr.open("POST", url);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(JSON.stringify(data));
+    console.log(JSON.stringify(data));
+    console.log(data);
     xhr.onload = function () {
       if (this.status == 200) {
-        console.log(this.responseText);
+        location.href = "http://127.0.0.1:5500/email-code.html";
+        setTimeout(() => {
+          console.log(this);
+        }, 1000);
       } else {
         console.log(this.responseText);
       }
     };
-
-    // try {
-    //   fetch(url, {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(data),
-    //   })
-    //     .then((res) => console.log(res))
-    //     .catch((err) => {
-    //       console.log(err);
-
-    //       throw err;
-    //     });
-    // } catch (err) {
-    //   console.log(err);
-    // }
   } else {
     showAlert();
   }
