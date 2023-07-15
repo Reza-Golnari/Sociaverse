@@ -97,24 +97,6 @@ loginFormInfo.addEventListener("submit", (event) => {
         console.log(this.responseText);
       }
     };
-
-    // try {
-    //   fetch(url, {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(data),
-    //   })
-    //     .then((res) => console.log(res))
-    //     .catch((err) => {
-    //       console.log(err);
-
-    //       throw err;
-    //     });
-    // } catch (err) {
-    //   console.log(err);
-    // }
   } else {
     showAlert();
   }
