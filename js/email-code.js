@@ -2,6 +2,8 @@ const $ = document;
 const enterCodeBtn = $.querySelector(".code-btn");
 const codeInput = $.querySelector("#code-input");
 const codeBox = $.querySelector(".code-box");
+const alert = $.querySelector(".alert");
+
 // Check Code
 
 enterCodeBtn.addEventListener("click", codeHandler);
@@ -29,5 +31,17 @@ async function codeHandler() {
     reset();
   } else {
     showAlert();
+  }
+}
+
+// give active to alert
+function showAlert() {
+  if (alert.className != "alert active") {
+    alert.classList.add("active");
+    setTimeout(() => {
+      alert.classList.remove("active");
+    }, 5000);
+  } else {
+    return;
   }
 }
