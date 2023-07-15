@@ -95,15 +95,13 @@ function signUpBtnHandler() {
     };
 
     fetch(url, {
-      mode: "no-cors",
       method: "POST",
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        "Content-Type": "multipart/form-data",
       },
       body: data,
     })
-      .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((res) => console.log(res))
       .catch((err) => console.log(err));
   } else {
     showAlert();
