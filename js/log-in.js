@@ -13,10 +13,6 @@ const goLogIn = $.querySelector(".go-log-in");
 const loginForm = $.querySelector(".log-in");
 const signupForm = $.querySelector(".sign-up");
 const email = $.querySelector("#email");
-const enterCodeBtn = $.querySelector(".code-btn");
-const codeInput = $.querySelector("#code-input");
-const codeBox = $.querySelector(".code-box");
-const codeLink = $.querySelector(".code-link");
 const regexEmail = /[a-zA-Z0-9.-]+@[a-z-]+\.[a-z]{2,3}/;
 
 logInBtn.addEventListener("click", logInBtnHandler);
@@ -73,50 +69,17 @@ function showAlert() {
   }
 }
 
-signUpBtn.addEventListener("click", (event) => {
-  event.preventDefault();
-  if (
-    checkInputs(signUserName, signUserPass) &&
-    repeatPass.value == signUserPass.value &&
-    email.value.match(regexEmail)
-  ) {
-    // codeBox.style.display = "block";
-    // signupForm.style.display = "none";
-
-    let url = "http://127.0.0.1:8000//accounts/register/";
-
-    let data = {
-      username: signUserName.value,
-      email: email.value,
-      password: signUserPass.value,
-      password2: repeatPass.value,
-    };
-
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-  } else {
-    showAlert();
-  }
-});
+signUpBtn.addEventListener("click", signUpBtnHandler);
 
 // sign up
+
 function signUpBtnHandler() {
   if (
     checkInputs(signUserName, signUserPass) &&
     repeatPass.value == signUserPass.value &&
     email.value.match(regexEmail)
   ) {
-    // codeBox.style.display = "block";
-    // signupForm.style.display = "none";
-
-    let url = "http://127.0.0.1:8000//accounts/register/";
+    let url = "http://127.0.0.1:8000/accounts/register/";
 
     let data = {
       username: signUserName.value,
@@ -132,8 +95,12 @@ function signUpBtnHandler() {
       },
       body: JSON.stringify(data),
     })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then(() => (location.href = "http://127.0.0.1:5500/email-code.html"))
+      .catch((err) =>
+        console.log(
+          "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+        )
+      );
   } else {
     showAlert();
   }
@@ -174,43 +141,5 @@ goLogIn.addEventListener("click", () => {
 
 goSignUp.addEventListener("click", () => {
   loginForm.style.display = "none";
-  signupForm.style.display = "block";
-});
-
-// Check Code
-
-enterCodeBtn.addEventListener("click", codeHandler);
-
-async function codeHandler() {
-  if (codeInput.value.length == 5 && +codeInput.value) {
-    let data = {
-      name: signUserName.value,
-      password: signUserPass.value,
-      email: email.value,
-    };
-
-    let header = {
-      "Content-Type": "application/json",
-    };
-
-    let options = {
-      method: "POST",
-      headers: header,
-      body: JSON.stringify(data),
-    };
-
-    await fetch("test", options);
-
-    reset();
-  } else {
-    showAlert();
-  }
-}
-
-// code link
-
-codeLink.addEventListener("click", () => {
-  reset();
-  codeBox.style.display = "none";
   signupForm.style.display = "block";
 });
