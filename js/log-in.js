@@ -122,7 +122,41 @@ function showAlert() {
 
 // sign up
 
-signUpBtn.addEventListener("click", signUpBtnHandler);
+signUpBtn.addEventListener("click", function signUpBtnHandler(e) {
+  e.preventDefault();
+
+  if (
+    checkInputs(signUserName, signUserPass) &&
+    repeatPass.value == signUserPass.value &&
+    email.value.match(regexEmail)
+  ) {
+    let url = "http://127.0.0.1:8000/accounts/register/";
+
+    let data = {
+      username: signUserName.value,
+      email: email.value,
+      password: signUserPass.value,
+      password2: repeatPass.value,
+    };
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", url);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify(data));
+    console.log(JSON.stringify(data));
+    console.log(data);
+    xhr.onload = function () {
+      if (this.status == 200) {
+        // location.href = "http://127.0.0.1:5500/email-code.html";
+        console.log(this.responseText);
+      } else {
+        console.log(this.responseText);
+      }
+    };
+  } else {
+    showAlert();
+  }
+});
 
 function signUpBtnHandler() {
   if (
@@ -147,10 +181,8 @@ function signUpBtnHandler() {
     console.log(data);
     xhr.onload = function () {
       if (this.status == 200) {
-        location.href = "http://127.0.0.1:5500/email-code.html";
-        setTimeout(() => {
-          console.log(this);
-        }, 1000);
+        // location.href = "http://127.0.0.1:5500/email-code.html";
+        console.log(this.responseText);
       } else {
         console.log(this.responseText);
       }
