@@ -88,19 +88,19 @@ function signUpBtnHandler() {
       password2: repeatPass.value,
     };
 
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then(() => (location.href = "http://127.0.0.1:5500/email-code.html"))
-      .catch((err) =>
-        console.log(
-          "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
-        )
-      );
+    try {
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then(() => (location.href = "http://127.0.0.1:5500/email-code.html"))
+        .catch((err) => console.log(err));
+    } catch (err) {
+      console.log(err);
+    }
   } else {
     showAlert();
   }
