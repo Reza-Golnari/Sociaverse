@@ -11,6 +11,7 @@ const eyeIcon = $.querySelectorAll(".eye-icon");
 const alert = $.querySelector(".alert");
 const goLogIn = $.querySelector(".go-log-in");
 const loginForm = $.querySelector(".log-in");
+const loginFormInfo = $.querySelector("#sign-form");
 const signupForm = $.querySelector(".sign-up");
 const email = $.querySelector("#email");
 const regexEmail = /[a-zA-Z0-9.-]+@[a-z-]+\.[a-z]{2,3}/;
@@ -69,11 +70,8 @@ function showAlert() {
   }
 }
 
-signUpBtn.addEventListener("click", signUpBtnHandler);
-
-// sign up
-
-function signUpBtnHandler() {
+loginFormInfo.addEventListener("submit", (event) => {
+  event.preventDefault();
   if (
     checkInputs(signUserName, signUserPass) &&
     repeatPass.value == signUserPass.value &&
@@ -96,15 +94,23 @@ function signUpBtnHandler() {
         },
         body: JSON.stringify(data),
       })
-        .then(() => (location.href = "http://127.0.0.1:5500/email-code.html"))
-        .catch((err) => console.log(err));
+        .then((res) => console.log(res))
+        .catch((err) => {
+          console.log(err);
+
+          throw err;
+        });
     } catch (err) {
       console.log(err);
     }
   } else {
     showAlert();
   }
-}
+});
+
+// sign up
+
+function signUpBtnHandler() {}
 
 // reset inputs
 function reset() {
