@@ -1,0 +1,210 @@
+@import "basic";
+
+.container {
+  height: 100vh;
+  overflow: hidden;
+  background-color: rgba($very-dark, 0.2);
+  @include flex();
+}
+
+// start of log in box
+.log-in {
+  @include sizing(500px, 400px);
+  background-color: $light-blue;
+  border-radius: 5px;
+  box-shadow: 0 2px 15px rgba($very-dark, 0.5);
+  padding: 20px;
+  //   start of form
+  &-form {
+    @include sizing(350px, 80%);
+    margin: 0 auto;
+    @include flex(column, center, center);
+    row-gap: 10px;
+
+    input,
+    button {
+      all: unset;
+      margin: 10px 0;
+      font-size: 1.2rem;
+      width: 350px;
+      padding: 10px;
+      background-color: $light;
+      border-radius: 3px;
+    }
+
+    .password-box,
+    .password-box-check {
+      position: relative;
+    }
+
+    .eye-icon {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: $light-blue;
+    }
+  }
+
+  .log-in-btn {
+    text-align: center;
+    font-weight: 900;
+    border: 2px solid $light-green;
+    color: $light-green;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: $light-green;
+      color: $light-blue;
+    }
+  }
+
+  // end of form
+}
+.go-sign-up,
+.go-log-in {
+  font-weight: 500;
+  color: $light;
+
+  span {
+    color: $light-green;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+// start of title
+.title {
+  width: 100%;
+  text-align: center;
+  color: $light-green;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  margin-top: 20px;
+}
+// end of title
+// end of log in box
+// start of sign up box
+.sign-up {
+  @include sizing(500px, 500px);
+  background-color: $light-blue;
+  border-radius: 5px;
+  box-shadow: 0 2px 15px rgba($very-dark, 0.5);
+  padding: 20px;
+  display: none;
+
+  .title {
+    margin-bottom: 20px;
+  }
+
+  form {
+    row-gap: 5px;
+  }
+
+  .sign-up-btn {
+    all: unset;
+    margin: 10px 0;
+    font-size: 1.2rem;
+    width: 350px;
+    padding: 10px;
+    background-color: $light;
+    border-radius: 3px;
+
+    text-align: center;
+    font-weight: 900;
+    border: 2px solid $light-green;
+    color: $light-green;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: $light-green;
+      color: $light-blue;
+    }
+  }
+}
+// end of sign up box
+
+// start of alert
+.alert {
+  position: absolute;
+  top: 20px;
+  opacity: 0;
+  left: -500px;
+  @include sizing(350px, auto);
+  padding: 20px;
+  background-color: $light-yellow;
+  border-radius: 10px;
+  filter: drop-shadow(0 2px 10px $light-yellow);
+
+  &-title {
+    color: $light-red;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+  }
+
+  .fas {
+    color: $light-red;
+  }
+
+  &-text {
+    font-weight: 500;
+  }
+
+  &.active {
+    animation: showAlert 5s ease-in-out backwards;
+  }
+}
+
+@keyframes showAlert {
+  0% {
+    opacity: 0;
+    left: -500px;
+  }
+  20% {
+    opacity: 1;
+    left: 20px;
+  }
+  80% {
+    opacity: 1;
+    left: 20px;
+  }
+  100% {
+    opacity: 0;
+    left: -500px;
+  }
+}
+// end of alert
+// Responsive
+@media screen and (max-width: 700px) {
+  .log-in,
+  .sign-up,
+  .code-box {
+    width: 350px;
+
+    form {
+      width: 300px;
+
+      input,
+      button,
+      .sign-up-btn {
+        width: 300px;
+      }
+    }
+  }
+
+  .alert {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .log-in,
+  .sign-up,
+  .code-box {
+    transform: scale(0.8);
+  }
+}
