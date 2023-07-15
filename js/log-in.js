@@ -86,23 +86,35 @@ loginFormInfo.addEventListener("submit", (event) => {
       password2: repeatPass.value,
     };
 
-    try {
-      fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      })
-        .then((res) => console.log(res))
-        .catch((err) => {
-          console.log(err);
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", url);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send(JSON.stringify(data));
+    xhr.onload = function () {
+      if (this.status == 200) {
+        console.log(this.responseText);
+      } else {
+        console.log(this.responseText);
+      }
+    };
 
-          throw err;
-        });
-    } catch (err) {
-      console.log(err);
-    }
+    // try {
+    //   fetch(url, {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(data),
+    //   })
+    //     .then((res) => console.log(res))
+    //     .catch((err) => {
+    //       console.log(err);
+
+    //       throw err;
+    //     });
+    // } catch (err) {
+    //   console.log(err);
+    // }
   } else {
     showAlert();
   }
