@@ -101,13 +101,21 @@
 
   form {
     row-gap: 5px;
+    height: 60%;
+  }
+
+  .btn-box {
+    width: 350px;
+    text-align: center;
+    margin: 0 auto;
+    @include flex(column, center, center);
   }
 
   .sign-up-btn {
     all: unset;
     margin: 10px 0;
     font-size: 1.2rem;
-    width: 350px;
+    width: 100%;
     padding: 10px;
     background-color: $light;
     border-radius: 3px;
@@ -188,12 +196,13 @@
     form {
       width: 300px;
 
-      input,
-      button,
-      .sign-up-btn {
+      input {
         width: 300px;
       }
     }
+  }
+  .btn-box {
+    width: 300px !important;
   }
 
   .alert {

@@ -70,8 +70,61 @@ function showAlert() {
   }
 }
 
-loginFormInfo.addEventListener("submit", (event) => {
-  event.preventDefault();
+// loginFormInfo.addEventListener("submit", (event) => {
+//   event.preventDefault();
+//   if (
+//     checkInputs(signUserName, signUserPass) &&
+//     repeatPass.value == signUserPass.value &&
+//     email.value.match(regexEmail)
+//   ) {
+//     let url = "http://127.0.0.1:8000/accounts/register/";
+
+//     let data = {
+//       username: signUserName.value,
+//       email: email.value,
+//       password: signUserPass.value,
+//       password2: repeatPass.value,
+//     };
+
+//     let xhr = new XMLHttpRequest();
+//     xhr.open("POST", url);
+//     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+//     xhr.send(JSON.stringify(data));
+//     xhr.onload = function () {
+//       if (this.status == 200) {
+//         console.log(this.responseText);
+//       } else {
+//         console.log(this.responseText);
+//       }
+//     };
+
+//     // try {
+//     //   fetch(url, {
+//     //     method: "POST",
+//     //     headers: {
+//     //       "Content-Type": "application/json",
+//     //     },
+//     //     body: JSON.stringify(data),
+//     //   })
+//     //     .then((res) => console.log(res))
+//     //     .catch((err) => {
+//     //       console.log(err);
+
+//     //       throw err;
+//     //     });
+//     // } catch (err) {
+//     //   console.log(err);
+//     // }
+//   } else {
+//     showAlert();
+//   }
+// });
+
+// sign up
+
+signUpBtn.addEventListener("click", signUpBtnHandler);
+
+function signUpBtnHandler() {
   if (
     checkInputs(signUserName, signUserPass) &&
     repeatPass.value == signUserPass.value &&
@@ -118,11 +171,7 @@ loginFormInfo.addEventListener("submit", (event) => {
   } else {
     showAlert();
   }
-});
-
-// sign up
-
-function signUpBtnHandler() {}
+}
 
 // reset inputs
 function reset() {
