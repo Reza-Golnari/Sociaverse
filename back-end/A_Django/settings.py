@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'rest_framework',
     'drf_spectacular',
+    'corsheaders'
 ]
 
 
@@ -48,7 +49,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'A_Django.urls'
 
@@ -153,6 +157,8 @@ REST_FRAMEWORK = {
 
     # Use drf_spectacular AutoSchema for generating OpenAPI schema automatically
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    'DEFAULT_RENDERER_CLASSES': ('rest_framework.renderers.JSONRenderer',),
+
 }
 
 # SIMPLE_JWT settings

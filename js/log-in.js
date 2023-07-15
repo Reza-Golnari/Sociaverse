@@ -73,7 +73,38 @@ function showAlert() {
   }
 }
 
-signUpBtn.addEventListener("click", signUpBtnHandler);
+signUpBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+  if (
+    checkInputs(signUserName, signUserPass) &&
+    repeatPass.value == signUserPass.value &&
+    email.value.match(regexEmail)
+  ) {
+    // codeBox.style.display = "block";
+    // signupForm.style.display = "none";
+
+    let url = "http://127.0.0.1:8000//accounts/register/";
+
+    let data = {
+      username: signUserName.value,
+      email: email.value,
+      password: signUserPass.value,
+      password2: repeatPass.value,
+    };
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  } else {
+    showAlert();
+  }
+});
 
 // sign up
 function signUpBtnHandler() {
@@ -97,9 +128,9 @@ function signUpBtnHandler() {
     fetch(url, {
       method: "POST",
       headers: {
-        "Content-Type": "multipart/form-data",
+        "Content-Type": "application/json",
       },
-      body: data,
+      body: JSON.stringify(data),
     })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
