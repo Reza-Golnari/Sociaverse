@@ -10,7 +10,7 @@ enterCodeBtn.addEventListener("click", codeHandler);
 
 async function codeHandler() {
   if (codeInput.value.length == 5 && +codeInput.value) {
-    let url = "http://127.0.0.1:8000/accounts/verify/";
+    let url = "http://localhost:8000/accounts/verify/";
 
     let data = {
       code: codeInput.value,
