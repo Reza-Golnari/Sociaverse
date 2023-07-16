@@ -10,10 +10,10 @@ enterCodeBtn.addEventListener("click", codeHandler);
 
 async function codeHandler() {
   if (codeInput.value.length == 5 && +codeInput.value) {
+    let url = "http://127.0.0.1:8000/accounts/verify/";
+
     let data = {
-      name: signUserName.value,
-      password: signUserPass.value,
-      email: email.value,
+      code: codeInput.value,
     };
 
     let header = {
@@ -26,9 +26,9 @@ async function codeHandler() {
       body: JSON.stringify(data),
     };
 
-    await fetch("test", options);
-
-    reset();
+    await fetch(url, options)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   } else {
     showAlert();
   }
