@@ -12,6 +12,57 @@
     <title>SociaVerse</title>
   </head>
   <body>
+    <div class="container">
+      <form class="sign-form">
+        <h2>Sign Up</h2>
+
+        <div class="user-name-box input-box">
+          <input
+            type="text"
+            id="user-name"
+            class="input"
+            autocomplete="off"
+            maxlength="12"
+          />
+          <label for="#user-name">Username</label>
+        </div>
+
+        <div class="email-box input-box">
+          <input type="email" id="email" class="input" autocomplete="off" />
+          <label for="#email">Email</label>
+        </div>
+
+        <div class="password-box input-box">
+          <input
+            type="password"
+            id="password"
+            class="input"
+            autocomplete="off"
+            maxlength="15"
+          />
+          <i class="fas fa-eye eye-icon"></i>
+          <label for="#password">Password</label>
+        </div>
+
+        <div class="password2-box input-box">
+          <input
+            type="password"
+            id="password2"
+            class="input"
+            autocomplete="off"
+            maxlength="15"
+          />
+          <i class="fas fa-eye eye-icon"></i>
+          <label for="#password2">Confirm Your Password</label>
+        </div>
+
+        <button type="button" class="form-btn">Submit</button>
+        <p class="form-parag">
+          Already have an account?
+          <a href="./log-in.html" class="form-link">Click Here</a>
+        </p>
+      </form>
+    </div>
     <!-- scripts -->
     <script src="./js/sign-up.js"></script>
   </body>

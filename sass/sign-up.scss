@@ -1,1 +1,61 @@
 @import "basic";
+
+.container {
+  @include sizing(100%, 100vh);
+  @include flex();
+  overflow: hidden;
+  background-color: rgba($very-dark, 0.2);
+}
+
+.sign-form {
+  @include sizing(400px, 500px);
+  background-color: $light-blue;
+  padding: 20px;
+  @include flex(column, center, space-between);
+  row-gap: 0px;
+}
+
+.input-box {
+  position: relative;
+  @include sizing(100%, auto);
+  @include flex();
+
+  label {
+    position: absolute;
+    top: 12px;
+    left: 10px;
+    pointer-events: none;
+    transition: all 0.2s;
+  }
+
+  .input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: 0;
+    border-radius: 5px;
+    font-size: 1.2rem;
+
+    &:focus ~ label {
+      top: -8px;
+      left: 15px;
+      font-size: 0.8rem;
+      background-color: $white;
+      padding: 2px;
+      border-radius: 5px;
+      font-weight: 500;
+    }
+  }
+
+  .eye-icon {
+    position: absolute;
+    right: 8px;
+    color: $light-blue;
+    cursor: pointer;
+    transition: color 0.4s;
+
+    &.active {
+      color: $light-red;
+    }
+  }
+}
