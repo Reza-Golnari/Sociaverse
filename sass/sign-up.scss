@@ -13,6 +13,8 @@
   padding: 20px;
   @include flex(column, center, space-between);
   row-gap: 0px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px 5px rgba($very-dark, 0.3);
 }
 
 .input-box {
@@ -56,5 +58,23 @@
   }
   .fa-eye-slash {
     color: $light-red;
+  }
+
+  .form-btn {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid $light-green;
+    outline: none;
+    cursor: pointer;
+    color: $light-green;
+    font-weight: 900;
+    background-color: transparent;
+    border-radius: 5px;
+    transition: color, background-color 0.2s;
+
+    &:hover {
+      background-color: $light-green;
+      color: $light-blue;
+    }
   }
 }
