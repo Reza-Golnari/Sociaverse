@@ -189,8 +189,7 @@
 // Responsive
 @media screen and (max-width: 700px) {
   .log-in,
-  .sign-up,
-  .code-box {
+  .sign-up {
     width: 350px;
 
     form {
@@ -212,8 +211,7 @@
 
 @media screen and (max-width: 500px) {
   .log-in,
-  .sign-up,
-  .code-box {
+  .sign-up {
     transform: scale(0.8);
   }
 }
