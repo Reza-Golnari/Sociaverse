@@ -170,5 +170,5 @@ cython_debug/
 .idea/
 media/
 # End of https://www.toptal.com/developers/gitignore/api/django
-db.sqlite3
+*.sqlite3
 .vscode/
