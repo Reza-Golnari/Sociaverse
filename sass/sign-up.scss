@@ -10,7 +10,7 @@
 .sign-form {
   @include sizing(400px, 500px);
   background-color: $light-blue;
-  padding: 20px;
+  padding: 30px 20px;
   @include flex(column, center, space-between);
   row-gap: 0px;
   border-radius: 10px;
@@ -88,5 +88,19 @@ h2 {
 
   .form-link {
     color: $light-green;
+  }
+}
+// Responsive
+@media screen and (max-width: 650px) {
+  .sign-form {
+    @include sizing(300px, 500px);
+  }
+  .form-text {
+    font-size: 0.8rem;
+  }
+}
+@media screen and (max-width: 400px) {
+  .sign-form {
+    transform: scale(0.8);
   }
 }
