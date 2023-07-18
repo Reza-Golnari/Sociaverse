@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
+
 // color
 
 $white: #ffffff;
@@ -12,12 +14,12 @@ $very-dark: #111417;
 
 // font
 
-@font-face {
-  font-family: "Roboto";
-  src: url("../font/Roboto-Medium.ttf") format("ttf");
-}
+// @font-face {
+//   font-family: "Roboto";
+//   src: url("../font/Roboto-Medium.ttf") format("ttf");
+// }
 
-$font-roboto: "Roboto";
+$font-roboto: "Roboto", sans-serif;
 
 // mixin
 
