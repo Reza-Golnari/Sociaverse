@@ -37,6 +37,3 @@ class NewUserAdmin(UserAdmin):
 
 # Register the MyUsers model with the customized NewUserAdmin
 admin.site.register(MyUsers, NewUserAdmin)
-
-# Register the OneTimeCode model
-admin.site.register(OneTimeCode)
