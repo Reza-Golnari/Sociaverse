@@ -8,6 +8,7 @@ let userName = inputList[0];
 let email = inputList[1];
 let password = inputList[2];
 let password2 = inputList[3];
+const alert = $.querySelector(".alert");
 
 // set event for icons
 eyeIconList.forEach((icon) => {
@@ -67,7 +68,7 @@ formBtn.addEventListener("click", (event) => {
       })
       .catch((err) => console.log(err));
   } else {
-    console.log("error");
+    showAlert();
   }
 });
 
@@ -95,3 +96,14 @@ function reset() {
     label.classList.remove("active");
   });
 }
+
+// give active to alert
+function showAlert() {
+  if (!alert.classList.contains("active")) {
+    alert.classList.add("active");
+    setTimeout(() => {
+      alert.classList.remove("active");
+    }, 5000);
+  }
+}
+export { showAlert };

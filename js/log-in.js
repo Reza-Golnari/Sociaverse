@@ -1,10 +1,12 @@
+import { showAlert } from "./sign-up.js";
+
 const $ = document;
 const eyeIcon = $.querySelector(".eye-icon");
-const inputList = $.querySelectorAll(".input");
 const formBtn = $.querySelector(".form-btn");
+const inputList = $.querySelectorAll(".input");
 const labelList = $.querySelectorAll("label");
-let userName = inputList[0];
-let password = inputList[1];
+let userName = $.querySelector("#user-name");
+let password = $.querySelector("#password");
 // set event for icons
 
 eyeIcon.addEventListener("click", () => {
@@ -70,3 +72,5 @@ function reset() {
     });
   }
 }
+
+showAlert();
