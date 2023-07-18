@@ -1,0 +1,60 @@
+@import "basic";
+
+.container {
+  height: 100vh;
+  overflow: hidden;
+  @include flex();
+}
+
+.main-box {
+  @include sizing(500px, 80vh);
+  @include flex(column, center, center);
+  box-shadow: 0 0 10px rgba($very-dark, 0.3);
+  border-radius: 10px;
+  padding: 10px;
+  row-gap: 50px;
+}
+
+.svg-box {
+  @include flex();
+  img {
+    @include sizing(70%, auto);
+  }
+}
+
+.content-box {
+  padding: 0 20px;
+
+  .page-title {
+    color: $light-red;
+    text-align: center;
+  }
+
+  .page-text {
+    font-weight: 700;
+    font-size: 1.2rem;
+
+    a {
+      color: $light-red;
+    }
+  }
+}
+// responsive
+
+@media screen and (max-width: 550px) {
+  .main-box {
+    width: 400px;
+  }
+  a {
+    padding-top: 10px;
+    display: flex;
+  }
+}
+@media screen and (max-width: 500px) {
+  .main-box {
+    transform: scale(0.8);
+  }
+  .page-title {
+    font-size: 1.5rem;
+  }
+}
