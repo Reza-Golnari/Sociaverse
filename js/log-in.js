@@ -1,27 +1,20 @@
-import { showAlert } from "./sign-up.js";
-
 const $ = document;
-const eyeIcon = $.querySelector(".eye-icon");
 const formBtn = $.querySelector(".form-btn");
+const eyeIcon = $.querySelector(".eye-icon");
 const inputList = $.querySelectorAll(".input");
 const labelList = $.querySelectorAll("label");
 let userName = $.querySelector("#user-name");
 let password = $.querySelector("#password");
-// set event for icons
+let alert = $.querySelector(".alert");
 
+// eye icon handler
 eyeIcon.addEventListener("click", () => {
-  if (eyeIcon.className == "fas fa-eye eye-icon") {
-    eyeIcon.className = "fas fa-eye-slash eye-icon";
-    eyeIcon.previousElementSibling.previousElementSibling.setAttribute(
-      "type",
-      "text"
-    );
+  if (eyeIcon.classList.contains("fa-eye-slash")) {
+    eyeIcon.classList.replace("fa-eye-slash", "fa-eye");
+    password.setAttribute("type", "password");
   } else {
-    eyeIcon.className = "fas fa-eye eye-icon";
-    eyeIcon.previousElementSibling.previousElementSibling.setAttribute(
-      "type",
-      "password"
-    );
+    eyeIcon.classList.replace("fa-eye", "fa-eye-slash");
+    password.setAttribute("type", "text");
   }
 });
 
@@ -59,7 +52,7 @@ formBtn.addEventListener("click", () => {
     console.log("not err");
     reset(userName, password);
   } else {
-    console.log("err");
+    showAlert();
   }
 });
 
@@ -73,4 +66,12 @@ function reset() {
   }
 }
 
-showAlert();
+// give active to alert
+function showAlert() {
+  if (!alert.classList.contains("active")) {
+    alert.classList.add("active");
+    setTimeout(() => {
+      alert.classList.remove("active");
+    }, 5000);
+  }
+}

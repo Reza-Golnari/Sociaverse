@@ -3,12 +3,12 @@ const eyeIconList = $.querySelectorAll(".eye-icon");
 const inputList = $.querySelectorAll(".input");
 const formBtn = $.querySelector(".form-btn");
 const labelList = $.querySelectorAll("label");
+const alert = $.querySelector(".alert");
 const regexEmail = /[a-zA-Z0-9.-]+@[a-z-]+\.[a-z]{2,3}/;
 let userName = inputList[0];
 let email = inputList[1];
 let password = inputList[2];
 let password2 = inputList[3];
-const alert = $.querySelector(".alert");
 
 // set event for icons
 eyeIconList.forEach((icon) => {
@@ -64,7 +64,7 @@ formBtn.addEventListener("click", (event) => {
       })
       .then((res) => {
         console.log(res.data);
-        reset(userName, password, password2, email);
+        location.href = "http://127.0.0.1:5500/email-code.html";
       })
       .catch((err) => console.log(err));
   } else {
@@ -106,4 +106,3 @@ function showAlert() {
     }, 5000);
   }
 }
-export { showAlert };
