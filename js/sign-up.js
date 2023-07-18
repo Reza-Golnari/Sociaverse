@@ -2,11 +2,13 @@ const $ = document;
 const eyeIconList = $.querySelectorAll(".eye-icon");
 const inputList = $.querySelectorAll(".input");
 const formBtn = $.querySelector(".form-btn");
+const labelList = $.querySelectorAll("label");
 const regexEmail = /[a-zA-Z0-9.-]+@[a-z-]+\.[a-z]{2,3}/;
 let userName = inputList[0];
 let email = inputList[1];
 let password = inputList[2];
 let password2 = inputList[3];
+
 // set event for icons
 eyeIconList.forEach((icon) => {
   icon.addEventListener("click", (event) => {
@@ -55,19 +57,14 @@ formBtn.addEventListener("click", (event) => {
       password2: password2.value,
     };
 
-    // fetch(url, {
-    //   method: "POST",
-    //   headers: header,
-    //   body: JSON.stringify(data),
-    // })
-    //   .then((res) => console.log(res))
-    //   .catch((err) => console.log(err));
-
     axios
       .post(url, data, {
         "Content-Type": "application/json",
       })
-      .then((res) => console.log(res.data))
+      .then((res) => {
+        console.log(res.data);
+        reset(userName, password, password2, email);
+      })
       .catch((err) => console.log(err));
   } else {
     console.log("error");
@@ -88,4 +85,13 @@ function checkInputs() {
   } else {
     return false;
   }
+}
+// reset inputs
+function reset() {
+  for (arg of arguments) {
+    arg.value = "";
+  }
+  labelList.forEach((label) => {
+    label.classList.remove("active");
+  });
 }
