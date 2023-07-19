@@ -1,4 +1,5 @@
-const $ = document;
+import { $, showAlert, showMessage } from "./basic.js";
+
 const eyeIconList = $.querySelectorAll(".eye-icon");
 const inputList = $.querySelectorAll(".input");
 const formBtn = $.querySelector(".form-btn");
@@ -64,23 +65,32 @@ formBtn.addEventListener("click", (event) => {
     axios
       .post(url, data, header)
       .then((res) => {
-        showMessage("loading", "");
+        showMessage("loading", "", loadingBox, loadingBoxTitle, loadingBoxText);
         location.href = "http://127.0.0.1:5500/log-in.html";
       })
       .catch((err) => {
         if (err.response.status == 400) {
           showMessage(
             "error",
-            "There is a problem with your registration, Duplicate username"
+            "There is a problem with your registration, Duplicate username or Email",
+            loadingBox,
+            loadingBoxTitle,
+            loadingBoxText
           );
         } else if (err.response.status == 404) {
           location.href = "http://127.0.0.1:5500/404.html";
         } else {
-          showMessage("error", "There is a problem with your registration");
+          showMessage(
+            "error",
+            "There is a problem with your registration",
+            loadingBox,
+            loadingBoxTitle,
+            loadingBoxText
+          );
         }
       });
   } else {
-    showAlert();
+    showAlert(alert);
   }
 });
 
@@ -97,43 +107,5 @@ function checkInputs() {
     return true;
   } else {
     return false;
-  }
-}
-// reset inputs
-function reset() {
-  for (arg of arguments) {
-    arg.value = "";
-  }
-  labelList.forEach((label) => {
-    label.classList.remove("active");
-  });
-}
-
-// give active to alert
-function showAlert() {
-  if (!alert.classList.contains("active")) {
-    alert.classList.add("active");
-    setTimeout(() => {
-      alert.classList.remove("active");
-    }, 5000);
-  }
-}
-
-// give active or err to loading box
-function showMessage(flag, msg) {
-  if (flag === "loading") {
-    loadingBox.classList.add("active");
-    setTimeout(() => {
-      loadingBox.classList.remove("active");
-    }, 4000);
-  } else if (flag === "error") {
-    loadingBox.classList.add("error");
-    loadingBoxTitle.textContent = "Error!";
-    loadingBoxText.textContent = msg;
-    setTimeout(() => {
-      loadingBox.classList.remove("error");
-      loadingBoxTitle.textContent = "Please Wait...";
-      loadingBoxText.textContent = "Your registration is in progress";
-    }, 6000);
   }
 }

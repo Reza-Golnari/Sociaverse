@@ -1,4 +1,5 @@
-const $ = document;
+import { $, showAlert, showMessage } from "./basic.js";
+
 const formBtn = $.querySelector(".form-btn");
 const eyeIcon = $.querySelector(".eye-icon");
 const inputList = $.querySelectorAll(".input");
@@ -6,6 +7,9 @@ const labelList = $.querySelectorAll("label");
 let userName = $.querySelector("#user-name");
 let password = $.querySelector("#password");
 let alert = $.querySelector(".alert");
+const loadingBox = $.querySelector(".loading-box");
+const loadingBoxTitle = $.querySelector(".loading-title");
+const loadingBoxText = $.querySelector(".loading-text");
 
 // eye icon handler
 eyeIcon.addEventListener("click", () => {
@@ -52,26 +56,6 @@ formBtn.addEventListener("click", () => {
     console.log("not err");
     reset(userName, password);
   } else {
-    showAlert();
+    showAlert(alert);
   }
 });
-
-// reset inputs
-function reset() {
-  for (arg of arguments) {
-    arg.value = "";
-    labelList.forEach((label) => {
-      label.classList.remove("active");
-    });
-  }
-}
-
-// give active to alert
-function showAlert() {
-  if (!alert.classList.contains("active")) {
-    alert.classList.add("active");
-    setTimeout(() => {
-      alert.classList.remove("active");
-    }, 5000);
-  }
-}
