@@ -4,11 +4,14 @@ const inputList = $.querySelectorAll(".input");
 const formBtn = $.querySelector(".form-btn");
 const labelList = $.querySelectorAll("label");
 const alert = $.querySelector(".alert");
+const loadingBox = $.querySelector(".loading-box");
+const loadingBoxTitle = $.querySelector(".loading-title");
+const loadingBoxText = $.querySelector(".loading-text");
 const regexEmail = /[a-zA-Z0-9.-]+@[a-z-]+\.[a-z]{2,3}/;
-let userName = inputList[0];
-let email = inputList[1];
-let password = inputList[2];
-let password2 = inputList[3];
+let userName = $.querySelector("#user-name");
+let email = $.querySelector("#email");
+let password = $.querySelector("#password");
+let password2 = $.querySelector("#password2");
 
 // set event for icons
 eyeIconList.forEach((icon) => {
@@ -59,13 +62,23 @@ formBtn.addEventListener("click", (event) => {
     };
 
     axios
-      .post(url, data, {
-        "Content-Type": "application/json",
-      })
+      .post(url, data, header)
       .then((res) => {
-        console.log(res.data);
+        showMessage("loading", "");
+        location.href = "http://127.0.0.1:5500/log-in.html";
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        if (err.response.status == 400) {
+          showMessage(
+            "error",
+            "There is a problem with your registration, Duplicate username"
+          );
+        } else if (err.response.status == 404) {
+          location.href = "http://127.0.0.1:5500/404.html";
+        } else {
+          showMessage("error", "There is a problem with your registration");
+        }
+      });
   } else {
     showAlert();
   }
@@ -103,5 +116,24 @@ function showAlert() {
     setTimeout(() => {
       alert.classList.remove("active");
     }, 5000);
+  }
+}
+
+// give active or err to loading box
+function showMessage(flag, msg) {
+  if (flag === "loading") {
+    loadingBox.classList.add("active");
+    setTimeout(() => {
+      loadingBox.classList.remove("active");
+    }, 4000);
+  } else if (flag === "error") {
+    loadingBox.classList.add("error");
+    loadingBoxTitle.textContent = "Error!";
+    loadingBoxText.textContent = msg;
+    setTimeout(() => {
+      loadingBox.classList.remove("error");
+      loadingBoxTitle.textContent = "Please Wait...";
+      loadingBoxText.textContent = "Your registration is in progress";
+    }, 6000);
   }
 }
