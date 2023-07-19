@@ -3,7 +3,6 @@ import { $, showAlert, showMessage } from "./basic.js";
 const eyeIconList = $.querySelectorAll(".eye-icon");
 const inputList = $.querySelectorAll(".input");
 const formBtn = $.querySelector(".form-btn");
-const labelList = $.querySelectorAll("label");
 const alert = $.querySelector(".alert");
 const loadingBox = $.querySelector(".loading-box");
 const loadingBoxTitle = $.querySelector(".loading-title");

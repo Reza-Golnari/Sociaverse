@@ -3,7 +3,6 @@ import { $, showAlert, showMessage } from "./basic.js";
 const formBtn = $.querySelector(".form-btn");
 const eyeIcon = $.querySelector(".eye-icon");
 const inputList = $.querySelectorAll(".input");
-const labelList = $.querySelectorAll("label");
 let userName = $.querySelector("#user-name");
 let password = $.querySelector("#password");
 let alert = $.querySelector(".alert");
@@ -51,10 +50,44 @@ function checkInputs() {
   }
 }
 
+// send data to the api
 formBtn.addEventListener("click", () => {
   if (checkInputs()) {
-    console.log("not err");
-    reset(userName, password);
+    let url = "http://localhost:8000/accounts/api/token/";
+
+    let header = {
+      "Content-Type": "application/json",
+    };
+
+    let data = {
+      username: userName.value,
+      password: password.value,
+    };
+
+    axios
+      .post(url, data, header)
+      .then((res) => console.log(res.data))
+      .catch((err) => {
+        if (err.response.status == 401) {
+          showMessage(
+            "error",
+            "The entered information is not correct",
+            loadingBox,
+            loadingBoxTitle,
+            loadingBoxText
+          );
+        } else if (err.response.status == 404) {
+          location.href = "http://127.0.0.1:5500/404.html";
+        } else {
+          showMessage(
+            "error",
+            "There was a problem verifying the profile",
+            loadingBox,
+            loadingBoxTitle,
+            loadingBoxText
+          );
+        }
+      });
   } else {
     showAlert(alert);
   }
