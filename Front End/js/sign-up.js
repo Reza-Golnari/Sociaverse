@@ -64,7 +64,6 @@ formBtn.addEventListener("click", (event) => {
       })
       .then((res) => {
         console.log(res.data);
-        location.href = "http://127.0.0.1:5500/email-code.html";
       })
       .catch((err) => console.log(err));
   } else {
