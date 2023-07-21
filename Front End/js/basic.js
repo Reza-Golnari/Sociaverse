@@ -3,26 +3,32 @@ const $ = document;
 // give active or err to loading box
 function showMessage(flag, msg, box, title, text) {
   if (flag === "loading") {
-    box.classList.add("active");
-    setTimeout(() => {
-      box.classList.remove("active");
-    }, 4000);
+    if (!box.classList.contains("active")) {
+      box.classList.add("active");
+      setTimeout(() => {
+        box.classList.remove("active");
+      }, 4000);
+    }
   } else if (flag === "error") {
-    box.classList.add("error");
-    title.textContent = "Error!";
-    text.textContent = msg;
-    setTimeout(() => {
-      box.classList.remove("error");
-      title.textContent = "Please Wait...";
-      text.textContent = "Your registration is in progress";
-    }, 6000);
+    if (!box.classList.contains("error")) {
+      box.classList.add("error");
+      title.textContent = "Error!";
+      text.textContent = msg;
+      setTimeout(() => {
+        box.classList.remove("error");
+        title.textContent = "Please Wait...";
+        text.textContent = "Your registration is in progress";
+      }, 6000);
+    }
   } else if (flag === "successful") {
-    box.classList.add("active");
-    title.textContent = "Transferring";
-    text.textContent = msg;
-    setTimeout(() => {
-      box.classList.remove("active");
-    }, 4000);
+    if (!box.classList.contains("active")) {
+      box.classList.add("active");
+      title.textContent = "Transferring";
+      text.textContent = msg;
+      setTimeout(() => {
+        box.classList.remove("active");
+      }, 4000);
+    }
   }
 }
 
@@ -81,7 +87,7 @@ function inputProblem(inputList) {
   } else {
     inputsArray = [arguments[1]];
   }
-  console.log(inputsArray);
+
   inputsArray.forEach((input) => {
     input.classList.add("problem");
   });

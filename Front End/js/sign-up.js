@@ -129,18 +129,23 @@ function checkInputs() {
       password.value.length < 8) ||
     password.value.length > 15
   ) {
+    showAlert(alert);
     inputProblem(inputList, userName, email, password, password2);
     return false;
   } else if (userName.value.length < 3 || userName.value.length > 12) {
+    showAlert(alert);
     inputProblem(inputList, userName);
     return false;
   } else if (!email.value.match(regexEmail)) {
+    showAlert(alert);
     inputProblem(inputList, email);
     return false;
   } else if (password.value.length < 8 || password.value.length > 15) {
+    showAlert(alert);
     inputProblem(inputList, password);
     return false;
   } else if (password.value != password2.value) {
+    showAlert(alert);
     inputProblem(inputList, password, password2);
     return false;
   } else {
