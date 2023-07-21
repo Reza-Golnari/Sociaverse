@@ -63,8 +63,14 @@ formBtn.addEventListener("click", (event) => {
 
     axios
       .post(url, data, header)
-      .then((res) => {
-        showMessage("loading", "", loadingBox, loadingBoxTitle, loadingBoxText);
+      .then(() => {
+        showMessage(
+          "loading",
+          "Please wait",
+          loadingBox,
+          loadingBoxTitle,
+          loadingBoxText
+        );
         location.href = "http://127.0.0.1:5500/log-in.html";
       })
       .catch((err) => {
@@ -76,8 +82,6 @@ formBtn.addEventListener("click", (event) => {
             loadingBoxTitle,
             loadingBoxText
           );
-        } else if (err.response.status == 404) {
-          location.href = "http://127.0.0.1:5500/404.html";
         } else {
           showMessage(
             "error",

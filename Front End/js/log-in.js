@@ -1,4 +1,4 @@
-import { $, showAlert, showMessage } from "./basic.js";
+import { $, showAlert, showMessage, foundCookie } from "./basic.js";
 
 const formBtn = $.querySelector(".form-btn");
 const eyeIcon = $.querySelector(".eye-icon");
@@ -51,7 +51,7 @@ function checkInputs() {
 }
 
 // send data to the api
-formBtn.addEventListener("click", () => {
+formBtn.addEventListener("click", async () => {
   if (checkInputs()) {
     let url = "http://localhost:8000/accounts/api/token/";
 
@@ -64,10 +64,11 @@ formBtn.addEventListener("click", () => {
       password: password.value,
     };
 
-    axios
+    await axios
       .post(url, data, header)
-      .then((res) => console.log(res.data))
+      .then((res) => saveToken(res.data))
       .catch((err) => {
+        console.log(err);
         if (err.response.status == 401) {
           showMessage(
             "error",
@@ -76,8 +77,6 @@ formBtn.addEventListener("click", () => {
             loadingBoxTitle,
             loadingBoxText
           );
-        } else if (err.response.status == 404) {
-          location.href = "http://127.0.0.1:5500/404.html";
         } else {
           showMessage(
             "error",
@@ -92,3 +91,39 @@ formBtn.addEventListener("click", () => {
     showAlert(alert);
   }
 });
+
+// Save token as cookie
+function saveToken(data) {
+  let token = data.access;
+  let refreshToken = data.refresh;
+
+  try {
+    document.cookie = `token=${token};path=/;expires=${setExpires(1)}`;
+    document.cookie = `refreshtoken=${refreshToken};path=/;expires=${setExpires(
+      30
+    )}`;
+
+    showMessage(
+      "successful",
+      "Your log in was successful",
+      loadingBox,
+      loadingBoxTitle,
+      loadingBoxText
+    );
+
+    setTimeout(() => {
+      location.href = "http://127.0.0.1:5500/index.html";
+    }, 2500);
+  } catch (err) {
+    console.log("error");
+  }
+}
+
+// return a time for expires
+function setExpires(day) {
+  let time = new Date();
+
+  time.setTime(time.getTime() + day * 24 * 60 * 60 * 1000);
+
+  return time;
+}

@@ -16,6 +16,13 @@ function showMessage(flag, msg, box, title, text) {
       title.textContent = "Please Wait...";
       text.textContent = "Your registration is in progress";
     }, 6000);
+  } else if (flag === "successful") {
+    box.classList.add("active");
+    title.textContent = "Transferring";
+    text.textContent = msg;
+    setTimeout(() => {
+      box.classList.remove("active");
+    }, 4000);
   }
 }
 
@@ -39,4 +46,26 @@ function reset() {
   });
 }
 
-export { $, showMessage, showAlert, reset };
+// search for our cookie
+function foundCookie(cookieName) {
+  let allCookies = document.cookie;
+  let cookiesArray = allCookies.split(";");
+  let cookiesList = [];
+  let mainCookie;
+
+  cookiesArray.forEach((cookie) => {
+    let mainCookie = cookie.split("=");
+    cookiesList.push(mainCookie);
+  });
+
+  cookiesList.some((cookie) => {
+    if (cookie[0] === cookieName) {
+      mainCookie = cookie;
+      return true;
+    }
+  });
+
+  return mainCookie;
+}
+
+export { $, showMessage, showAlert, reset, foundCookie };
