@@ -73,8 +73,15 @@ function inputProblem(inputList) {
   inputList.forEach((input) => {
     input.classList.remove("problem");
   });
-  let inputsArray = [arguments[1], arguments[2]];
-
+  let inputsArray;
+  if ((arguments.length = 5)) {
+    inputsArray = [arguments[1], arguments[2], arguments[3], arguments[4]];
+  } else if ((arguments.length = 3)) {
+    inputsArray = [arguments[1], arguments[2]];
+  } else {
+    inputsArray = [arguments[1]];
+  }
+  console.log(inputsArray);
   inputsArray.forEach((input) => {
     input.classList.add("problem");
   });

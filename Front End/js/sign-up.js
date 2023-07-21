@@ -123,15 +123,27 @@ formBtn.addEventListener("click", (event) => {
 // check inputs value
 function checkInputs() {
   if (
-    userName.value.length >= 3 &&
-    userName.value.length <= 12 &&
-    email.value.match(regexEmail) &&
-    password.value.length >= 8 &&
-    password.value.length <= 15 &&
-    +password.value == +password2.value
+    userName.value.length < 3 ||
+    (userName.value.length > 12 &&
+      !email.value.match(regexEmail) &&
+      password.value.length < 8) ||
+    password.value.length > 15
   ) {
-    return true;
-  } else {
+    inputProblem(inputList, userName, email, password, password2);
     return false;
+  } else if (userName.value.length < 3 || userName.value.length > 12) {
+    inputProblem(inputList, userName);
+    return false;
+  } else if (!email.value.match(regexEmail)) {
+    inputProblem(inputList, email);
+    return false;
+  } else if (password.value.length < 8 || password.value.length > 15) {
+    inputProblem(inputList, password);
+    return false;
+  } else if (password.value != password2.value) {
+    inputProblem(inputList, password, password2);
+    return false;
+  } else {
+    return true;
   }
 }
