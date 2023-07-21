@@ -68,4 +68,16 @@ function foundCookie(cookieName) {
   return mainCookie;
 }
 
-export { $, showMessage, showAlert, reset, foundCookie };
+// set class 'problem' for inputs
+function inputProblem(inputList) {
+  inputList.forEach((input) => {
+    input.classList.remove("problem");
+  });
+  let inputsArray = [arguments[1], arguments[2]];
+
+  inputsArray.forEach((input) => {
+    input.classList.add("problem");
+  });
+}
+
+export { $, showMessage, showAlert, reset, foundCookie, inputProblem };

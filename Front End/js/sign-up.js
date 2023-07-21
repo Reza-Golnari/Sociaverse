@@ -1,4 +1,4 @@
-import { $, showAlert, showMessage } from "./basic.js";
+import { $, showAlert, showMessage, inputProblem } from "./basic.js";
 
 const eyeIconList = $.querySelectorAll(".eye-icon");
 const inputList = $.querySelectorAll(".input");
@@ -74,14 +74,37 @@ formBtn.addEventListener("click", (event) => {
         location.href = "http://127.0.0.1:5500/log-in.html";
       })
       .catch((err) => {
-        if (err.response.status == 400) {
-          showMessage(
-            "error",
-            "There is a problem with your registration, Duplicate username or Email",
-            loadingBox,
-            loadingBoxTitle,
-            loadingBoxText
-          );
+        let errorData = err.response.data;
+        if (err.response.status === 400) {
+          console.log(errorData);
+          if (errorData.email && errorData.username) {
+            showMessage(
+              "error",
+              "The username and email entered already exist, please enter a new name and email",
+              loadingBox,
+              loadingBoxTitle,
+              loadingBoxText
+            );
+            inputProblem(inputList, userName, email);
+          } else if (errorData.email) {
+            showMessage(
+              "error",
+              "The entered email address already exists, please enter a new email address",
+              loadingBox,
+              loadingBoxTitle,
+              loadingBoxText
+            );
+            inputProblem(inputList, email);
+          } else if (errorData.username) {
+            showMessage(
+              "error",
+              "The username entered already exists, please enter a new one",
+              loadingBox,
+              loadingBoxTitle,
+              loadingBoxText
+            );
+            inputProblem(inputList, userName);
+          }
         } else {
           showMessage(
             "error",
