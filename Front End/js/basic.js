@@ -143,6 +143,32 @@ function setExpires(day) {
   return time;
 }
 
+// add event for log out btn
+function logOutBtnHandler(btn, box, bg1, bg2, closeBtn) {
+  btn.addEventListener("click", () => {
+    showLogOutBox(box, bg1, bg2);
+    hiddenLogOutBox(box, bg1, bg2, closeBtn);
+  });
+}
+
+// show log out box and add class show and blur background
+function showLogOutBox(box, bg1, bg2) {
+  if (!box.classList.contains("show")) {
+    box.classList.add("show");
+    bg1.style.filter = "blur(8px)";
+    bg2.style.filter = "blur(8px)";
+  }
+}
+
+// hidden log out box by icon
+function hiddenLogOutBox(box, bg1, bg2, closeBtn) {
+  closeBtn.addEventListener("click", () => {
+    box.classList.remove("show");
+    bg1.style.filter = "blur(0px)";
+    bg2.style.filter = "blur(0px)";
+  });
+}
+
 export {
   $,
   showMessage,
@@ -153,4 +179,5 @@ export {
   isLoggedIn,
   sendRefreshToken,
   setExpires,
+  logOutBtnHandler,
 };

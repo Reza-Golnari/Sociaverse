@@ -193,8 +193,6 @@ header {
     z-index: 99999999999999;
     opacity: 0;
     visibility: hidden;
-    display: none;
-    transition: all 0.5s;
 
     .log-out-close {
       position: absolute;
@@ -235,9 +233,21 @@ header {
     }
 
     &.show {
-      opacity: 1;
-      visibility: visible;
-      display: block;
+      animation: showBox 0.3s linear forwards;
+    }
+
+    @keyframes showBox {
+      0% {
+        visibility: hidden;
+        opacity: 0;
+      }
+      10% {
+        visibility: visible;
+      }
+      100% {
+        opacity: 1;
+        visibility: visible;
+      }
     }
   }
   // end of log out box
