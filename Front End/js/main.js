@@ -23,4 +23,11 @@ window.addEventListener("load", async () => {
   }
 });
 
-logOutBtnHandler(logoutBtn, logoutBox, leftBox, rightBox, logoutClose);
+logOutBtnHandler(
+  logoutBtn,
+  logoutBox,
+  leftBox,
+  rightBox,
+  logoutClose,
+  logOutClick
+);

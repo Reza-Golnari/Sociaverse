@@ -144,10 +144,15 @@ function setExpires(day) {
 }
 
 // add event for log out btn
-function logOutBtnHandler(btn, box, bg1, bg2, closeBtn) {
+function logOutBtnHandler(btn, box, bg1, bg2, closeBtn, clickBtn) {
   btn.addEventListener("click", () => {
     showLogOutBox(box, bg1, bg2);
     hiddenLogOutBox(box, bg1, bg2, closeBtn);
+  });
+  clickBtn.addEventListener("click", () => {
+    document.cookie = `token=;path=/;expires=${setExpires(-50)}`;
+    document.cookie = `refreshtoken=;path=/;expires=${setExpires(-50)}`;
+    location.reload();
   });
 }
 

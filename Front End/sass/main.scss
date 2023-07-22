@@ -184,7 +184,7 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    @include sizing(40%, 25%);
+    @include sizing(40%, 200px);
     padding: 20px;
     border-radius: 20px;
     box-shadow: 0 2px 10px 5px rgba($very-dark, 0.4);
