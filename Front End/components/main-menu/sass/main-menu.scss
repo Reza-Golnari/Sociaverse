@@ -1,0 +1,16 @@
+@import "../../../sass/basic";
+
+.container {
+  height: 100vh;
+  display: grid;
+  place-content: center;
+}
+
+.box {
+  @include sizing(220px, 200px);
+  padding: 10px;
+  border: 1px solid rgba($color: #000000, $alpha: 0.2);
+  border-radius: 10px;
+  box-shadow: 0 2px 15px 5px rgba($color: #000000, $alpha: 0.2);
+  @include flex(column, center, space-around);
+}

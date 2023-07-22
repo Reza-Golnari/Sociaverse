@@ -93,4 +93,25 @@ function inputProblem(inputList) {
   });
 }
 
-export { $, showMessage, showAlert, reset, foundCookie, inputProblem };
+// Check if user logged in, show log out
+function isLoggedIn(logInElem, logOutElem) {
+  if (foundCookie(" token")) {
+    logInElem.style.display = "none";
+    logOutElem.style.display = "block";
+    return true;
+  } else {
+    logInElem.style.display = "block";
+    logOutElem.style.display = "none";
+    return false;
+  }
+}
+
+export {
+  $,
+  showMessage,
+  showAlert,
+  reset,
+  foundCookie,
+  inputProblem,
+  isLoggedIn,
+};

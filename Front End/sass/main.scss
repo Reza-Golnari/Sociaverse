@@ -144,9 +144,36 @@ header {
   // end of menu
   // start of log in
   .logIn-box {
-    @include sizing(100px, auto);
     margin-right: 20px;
     padding: 10px;
+
+    .acc-btn {
+      padding: 8px 15px;
+      text-decoration: none;
+      color: $light-blue;
+      border: 2px solid $light-blue;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover {
+        background-color: $light-blue;
+        color: $very-dark;
+      }
+    }
+
+    .logOut {
+      padding: 9px 10px;
+      background-color: transparent;
+      border-color: $light-red;
+      color: $light-red;
+      display: none;
+
+      &:hover {
+        background-color: $light-red;
+        color: $very-dark;
+      }
+    }
   }
   // end of log in
 }
