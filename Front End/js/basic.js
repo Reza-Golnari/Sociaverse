@@ -106,6 +106,43 @@ function isLoggedIn(logInElem, logOutElem) {
   }
 }
 
+// Checking if a token refresh is sent if the user's token is expired
+async function sendRefreshToken() {
+  if (foundCookie(" token") && foundCookie(" refreshtoken")) {
+    return true;
+  } else if (!foundCookie(" token") && foundCookie(" refreshtoken")) {
+    let refreshToken = foundCookie(" refreshtoken")[1];
+    let url = "http://localhost:8000/accounts/api/token/refresh/";
+    let data = {
+      refresh: refreshToken,
+    };
+    let header = {
+      "Content-Type": "application/json",
+    };
+    await axios
+      .post(url, data, header)
+      .then((res) => saveTokenAfterRefreshToken(res.data.access))
+      .catch((err) => console.log(err));
+  } else if (!foundCookie(" refreshtoken")) {
+    return false;
+  }
+}
+
+// save token after sending refresh token
+function saveTokenAfterRefreshToken(token) {
+  console.log(token);
+  document.cookie = `token=${token};path=/;expires=${setExpires(1)}`;
+}
+
+// return a time for expires
+function setExpires(day) {
+  let time = new Date();
+
+  time.setTime(time.getTime() + day * 24 * 60 * 60 * 1000);
+
+  return time;
+}
+
 export {
   $,
   showMessage,
@@ -114,4 +151,6 @@ export {
   foundCookie,
   inputProblem,
   isLoggedIn,
+  sendRefreshToken,
+  setExpires,
 };

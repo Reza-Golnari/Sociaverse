@@ -1,4 +1,4 @@
-import { $, showAlert, showMessage, foundCookie } from "./basic.js";
+import { $, showAlert, showMessage, setExpires } from "./basic.js";
 
 const formBtn = $.querySelector(".form-btn");
 const eyeIcon = $.querySelector(".eye-icon");
@@ -117,13 +117,4 @@ function saveToken(data) {
   } catch (err) {
     console.log("error");
   }
-}
-
-// return a time for expires
-function setExpires(day) {
-  let time = new Date();
-
-  time.setTime(time.getTime() + day * 24 * 60 * 60 * 1000);
-
-  return time;
 }
