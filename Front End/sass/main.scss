@@ -184,7 +184,7 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    @include sizing(40%, 200px);
+    @include sizing(40%, max-content);
     padding: 20px;
     border-radius: 20px;
     box-shadow: 0 2px 10px 5px rgba($very-dark, 0.4);
@@ -251,6 +251,23 @@ header {
     }
   }
   // end of log out box
+  // responsive
+  @media screen and (max-width: 760px) {
+    .log-out-box {
+      width: 80%;
+    }
+  }
+  @media screen and (max-width: 400px) {
+    .log-out-box {
+      width: 90%;
+      .log-out-title {
+        font-size: 1.5rem;
+      }
+      .log-out-btn {
+        width: 60%;
+      }
+    }
+  }
 }
 // end of nav
 
