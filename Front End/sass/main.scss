@@ -19,6 +19,7 @@ header {
   background-image: url(../pic/Header.jpg);
   background-size: cover;
   background-position: 20%;
+  transition: filter 0.5s;
 }
 // end of right box
 // end of left box
@@ -27,6 +28,7 @@ header {
   clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 0 100%, 0% 50%, 0 0);
   background-color: $very-dark;
   @include flex(row, center, flex-start);
+  transition: filter 0.5s;
   // start of content box
   .content-box {
     width: 60%;
@@ -52,7 +54,7 @@ header {
 .navbar {
   @include sizing(100%, 60px);
   @include flex(row, center, space-between);
-  position: fixed;
+  position: absolute;
   top: 0;
   padding: 5px 20px;
   background-color: $very-dark;
@@ -176,6 +178,69 @@ header {
     }
   }
   // end of log in
+  // start of log out box
+  .log-out-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    @include sizing(40%, 25%);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px 5px rgba($very-dark, 0.4);
+    background-color: $dark-light;
+    color: $light-yellow;
+    z-index: 99999999999999;
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+    transition: all 0.5s;
+
+    .log-out-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: $light-red;
+    }
+
+    .log-out-title {
+      font-size: 2rem;
+    }
+
+    .log-out-text {
+      margin: 20px 0;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .log-out-btn {
+      width: 40%;
+      padding: 10px;
+      background-color: transparent;
+      border: 2px solid $light-red;
+      border-radius: 10px;
+      outline: none;
+      color: $light-red;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: 700;
+      transition: all 0.2s;
+
+      &:hover {
+        background-color: $light-red;
+        color: $light-yellow;
+      }
+    }
+
+    &.show {
+      opacity: 1;
+      visibility: visible;
+      display: block;
+    }
+  }
+  // end of log out box
 }
 // end of nav
 

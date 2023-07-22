@@ -1,4 +1,4 @@
-import { $, isLoggedIn, sendRefreshToken } from "./basic.js";
+import { $, foundCookie, isLoggedIn, sendRefreshToken } from "./basic.js";
 
 const loginBtn = $.querySelector(".logIn");
 const logoutBtn = $.querySelector(".logOut");
