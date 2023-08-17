@@ -5,6 +5,7 @@ import {
   sendRefreshToken,
   logOutBtnHandler,
 } from "./basic.js";
+import { CreateBox } from "../components/main-menu/main-menu.js";
 
 const loginBtn = $.querySelector(".logIn");
 const logoutBtn = $.querySelector(".logOut");
@@ -31,3 +32,5 @@ logOutBtnHandler(
   logoutClose,
   logOutClick
 );
+
+window.customElements.define("main-menu", CreateBox);
