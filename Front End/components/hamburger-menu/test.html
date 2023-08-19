@@ -18,23 +18,34 @@
       </div>
       <!-- end of logo -->
       <!-- start of hamburger-menu btn -->
-      <div class="hamburger active">
+      <div class="hamburger">
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
       </div>
       <!-- end of hamburger-menu btn -->
       <!-- start of hamburger-menu box -->
-      <!-- <div class="hamburger-menu-box"></div> -->
+      <section class="hamburger-menu-box">
+        <!-- start of hamburger box logo -->
+        <div class="logo-box side-logo">
+          <a href="index.html" class="logo side-logo">
+            <span class="green-text">S</span>ocia<span class="green-text"
+              >V</span
+            >erse
+          </a>
+        </div>
+        <!-- end of hamburger box logo -->
+      </section>
       <!-- end of hamburger-menu box -->
     </nav>
     <!-- end of hamburger-menu -->
 
     <script>
-      const icon = document.querySelector(".active");
-
+      const icon = document.querySelector(".hamburger");
+      const sideBox = document.querySelector(".hamburger-menu-box");
       icon.addEventListener("click", (e) => {
         icon.classList.toggle("active");
+        sideBox.classList.toggle("show");
       });
     </script>
   </body>
