@@ -204,20 +204,28 @@
   }
   // end of log out box
   // responsive
-  @media screen and (max-width: 760px) {
-    .log-out-box {
-      width: 80%;
+  @media screen and (max-width: 990px) {
+    .logIn-box {
+      margin: 0;
+      padding: 0;
+    }
+    .search-box {
+      width: 150px;
+    }
+    .search {
+      width: 100px !important;
     }
   }
-  @media screen and (max-width: 400px) {
-    .log-out-box {
-      width: 90%;
-      .log-out-title {
-        font-size: 1.5rem;
-      }
-      .log-out-btn {
-        width: 60%;
-      }
+  @media screen and (max-width: 800px) {
+    .logo {
+      font-size: 1.5rem;
+    }
+    .acc-btn {
+      padding: 5px 10px !important;
+      font-size: 1rem;
+    }
+    .header-menu {
+      column-gap: 15px;
     }
   }
 }
@@ -227,3 +235,8 @@
   color: $light-green;
 }
 // end of green text
+@media screen and (max-width: 750px) {
+  .navbar {
+    display: none;
+  }
+}
