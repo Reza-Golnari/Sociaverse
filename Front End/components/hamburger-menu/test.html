@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/hamburger-menu.min.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- start of hamburger-menu -->
+    <nav class="hamburger-navbar">
+      <!-- start of logo -->
+      <div class="logo-box">
+        <a href="index.html" class="logo">
+          <span class="green-text">S</span>ocia<span class="green-text">V</span
+          >erse
+        </a>
+      </div>
+      <!-- end of logo -->
+      <!-- start of hamburger-menu btn -->
+      <div class="hamburger active">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </div>
+      <!-- end of hamburger-menu btn -->
+      <!-- start of hamburger-menu box -->
+      <!-- <div class="hamburger-menu-box"></div> -->
+      <!-- end of hamburger-menu box -->
+    </nav>
+    <!-- end of hamburger-menu -->
+
+    <script>
+      const icon = document.querySelector(".active");
+
+      icon.addEventListener("click", (e) => {
+        icon.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>

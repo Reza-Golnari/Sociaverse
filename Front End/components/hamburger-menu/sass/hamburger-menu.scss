@@ -1,0 +1,77 @@
+@import "../../../sass/basic";
+
+.hamburger-navbar {
+  @include sizing(100%, auto);
+  @include flex(row, center, space-between);
+  position: absolute;
+  top: 0;
+  padding: 10px 20px;
+  background-color: $very-dark;
+  //   start of logo
+  .logo {
+    position: relative;
+    text-decoration: none;
+    font-size: 1.7rem;
+    font-weight: 900;
+    color: $light;
+    letter-spacing: 1px;
+    z-index: 999;
+
+    &::before {
+      content: "";
+      @include sizing(10px, 10px);
+      position: absolute;
+      right: -12px;
+      bottom: 7px;
+      border-radius: 50%;
+      background-color: $light-green;
+    }
+  }
+  //   end of logo
+  // start of green text
+  .green-text {
+    color: $light-green;
+  }
+  // end of green text
+  //   start of hamburger icon
+  .hamburger {
+    position: relative;
+    @include flex(column, center, center);
+    @include sizing(35px, 35px);
+    border-radius: 5px;
+    cursor: pointer;
+
+    &-line {
+      position: absolute;
+      width: 75%;
+      height: 2px;
+      background-color: $light;
+      transition: all 0.3s;
+
+      &:first-child {
+        top: 8px;
+      }
+      &:last-child {
+        bottom: 8px;
+      }
+    }
+
+    &.active {
+      .hamburger-line {
+        background-color: $light-red;
+        &:first-child {
+          top: 50%;
+          transform: rotate(-45deg);
+        }
+        &:last-child {
+          top: 50%;
+          transform: rotate(45deg);
+        }
+        &:nth-child(2) {
+          transform: translateX(100px);
+        }
+      }
+    }
+  }
+  //   end of hamburger icon
+}
