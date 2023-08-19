@@ -91,6 +91,61 @@
     &.show {
       transform: translateX(0px);
     }
+
+    .side-menu {
+      @include sizing(80%, auto);
+      margin-top: 80px;
+      @include flex(column, flex-start, center);
+      row-gap: 30px;
+      padding: 5px;
+
+      &-item {
+        width: 100%;
+        padding-bottom: 5px;
+        list-style-type: none;
+        border-bottom: 2px solid $light-green;
+      }
+
+      &-link {
+        color: $light;
+        text-decoration: none;
+
+        &.active {
+          color: $light-green;
+        }
+      }
+
+      .side-acc-btn {
+        @include sizing(100%, 35px);
+        @include flex();
+        outline: none;
+        background-color: transparent;
+        border: 1px solid var(--clr);
+        color: var(--clr);
+        text-decoration: none;
+        border-radius: 2px;
+
+        &:last-child {
+          display: none;
+        }
+      }
+    }
   }
   //   end of hamburger box
+}
+// responsive
+
+@media screen and (max-width: 670px) {
+  .hamburger-menu-box {
+    width: 60% !important;
+  }
+}
+@media screen and (max-width: 460px) {
+  .logo {
+    font-size: 1.3rem !important;
+  }
+  .side-logo {
+    padding-top: 10px !important;
+    font-size: 1.3rem !important;
+  }
 }
