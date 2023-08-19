@@ -46,6 +46,11 @@ $font-roboto: "Roboto", sans-serif;
   padding: 0;
   box-sizing: border-box;
 }
+
+body {
+  font-family: $font-roboto;
+}
+
 .container {
   position: relative;
   @include sizing(100%, auto);

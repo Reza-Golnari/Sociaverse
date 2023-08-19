@@ -98,6 +98,8 @@ function isLoggedIn(logInElem, logOutElem) {
   if (foundCookie(" token")) {
     logInElem.style.display = "none";
     logOutElem.style.display = "block";
+    logOutElem.style.fontSize = "1rem";
+    logOutElem.style.fontWeight = "700";
     return true;
   } else {
     logInElem.style.display = "block";
@@ -174,6 +176,11 @@ function hiddenLogOutBox(box, bg1, bg2, closeBtn) {
   });
 }
 
+// found route and give active for list items
+function foundRoute() {
+  console.log(location.href);
+}
+
 export {
   $,
   showMessage,
@@ -185,4 +192,5 @@ export {
   sendRefreshToken,
   setExpires,
   logOutBtnHandler,
+  foundRoute,
 };

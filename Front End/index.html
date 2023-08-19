@@ -9,6 +9,7 @@
       rel="stylesheet"
       href="./icon/fontawesome-free-6.4.0-web/css/all.min.css"
     />
+
     <title>SociaVerse</title>
   </head>
   <body>
@@ -16,62 +17,7 @@
       <!-- start of header -->
       <header>
         <!-- start of nav -->
-        <nav class="navbar" id="main-menu">
-          <!-- start of logo -->
-          <div class="logo-box">
-            <a href="index.html" class="logo">
-              <span class="green-text">S</span>ocia<span class="green-text"
-                >V</span
-              >erse
-            </a>
-          </div>
-          <!-- end of logo -->
-          <!-- start of search box -->
-          <div class="search-box">
-            <input
-              class="search"
-              type="text"
-              placeholder="Search"
-              name="search"
-              autocomplete="off"
-            />
-            <i class="fa fa-search search-icon" aria-hidden="true"></i>
-          </div>
-          <!-- end of search box -->
-          <!-- start of menu -->
-          <ul class="header-menu">
-            <li class="header-menu-item">
-              <a href="index.html" class="header-menu-link active">Home</a>
-            </li>
-            <li class="header-menu-item">
-              <a href="explore.html" class="header-menu-link">Explore</a>
-            </li>
-            <li class="header-menu-item">
-              <a href="profile.html" class="header-menu-link">Profile</a>
-            </li>
-            <li class="header-menu-item">
-              <a href="direct.html" class="header-menu-link">Direct</a>
-            </li>
-          </ul>
-          <!-- end of menu -->
-          <!-- start of login -->
-          <div class="logIn-box">
-            <a href="log-in.html" class="logIn acc-btn">Log In</a>
-            <button class="logOut acc-btn">Log Out</button>
-          </div>
-          <!-- end of login -->
-          <!-- start of log out box -->
-          <div class="log-out-box">
-            <i class="fa fa-times log-out-close" aria-hidden="true"></i>
-            <h2 class="log-out-title">Are You Sure?</h2>
-            <p class="log-out-text">
-              By logging out of your account, you will not be able to perform
-              activities that require registration
-            </p>
-            <button class="log-out-btn">Log Out</button>
-          </div>
-          <!-- end of log out box -->
-        </nav>
+        <main-menu></main-menu>
         <!-- end of nav -->
         <!-- start of content box -->
         <section class="left-box">
@@ -92,12 +38,10 @@
         <section class="right-box"></section>
         <!-- end of content box -->
       </header>
-      <main-menu></main-menu>
       <!-- end of header -->
     </div>
     <!-- scripts -->
     <script src="./js/axios/axios.min.js"></script>
-    <script src="./js/main.js"></script>
     <script type="module" src="./js/main.js"></script>
   </body>
 </html>

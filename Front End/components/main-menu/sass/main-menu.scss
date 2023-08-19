@@ -1,16 +1,229 @@
 @import "../../../sass/basic";
 
-.container {
-  height: 100vh;
-  display: grid;
-  place-content: center;
-}
+// start of nav
 
-.box {
-  @include sizing(220px, 200px);
-  padding: 10px;
-  border: 1px solid rgba($color: #000000, $alpha: 0.2);
-  border-radius: 10px;
-  box-shadow: 0 2px 15px 5px rgba($color: #000000, $alpha: 0.2);
-  @include flex(column, center, space-around);
+.navbar {
+  @include sizing(100%, 60px);
+  @include flex(row, center, space-between);
+  position: absolute;
+  top: 0;
+  padding: 5px 20px;
+  background-color: $very-dark;
+  z-index: 999;
+  box-shadow: 0 2px 15px rgba($very-dark, 0.9);
+  font-size: $font-roboto;
+
+  //   start of logo
+  .logo {
+    position: relative;
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 900;
+    color: $light;
+    letter-spacing: 1px;
+    z-index: 999;
+
+    &::before {
+      content: "";
+      @include sizing(10px, 10px);
+      position: absolute;
+      right: -12px;
+      bottom: 7px;
+      border-radius: 50%;
+      background-color: $light-green;
+    }
+  }
+  //   end of logo
+  // start of search box
+  .search-box {
+    @include flex(row, center, center);
+    column-gap: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: $light;
+
+    .search {
+      all: unset;
+      font-weight: 500;
+      font-size: 1.1rem;
+      color: rgba($very-dark, 0.7);
+    }
+
+    .search-icon {
+      font-size: 1.2rem;
+      padding: 3px;
+      cursor: pointer;
+    }
+  }
+  // end of search box
+  // start of menu
+  .header-menu {
+    @include flex(row, center, center);
+    column-gap: 30px;
+    list-style-type: none;
+
+    &-link {
+      position: relative;
+      text-decoration: none;
+      color: $light;
+      font-weight: 500;
+      transition: 0.2s;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        @include sizing(0%, 2px);
+        background-color: $light-green;
+        transition: 0.2s;
+      }
+
+      &:hover::before {
+        width: 100%;
+      }
+
+      &:hover {
+        color: $light-green;
+      }
+
+      &.active {
+        color: $light-green;
+
+        &::before {
+          display: none;
+        }
+      }
+    }
+  }
+  // end of menu
+  // start of log in
+  .logIn-box {
+    margin-right: 20px;
+    padding: 10px;
+
+    .acc-btn {
+      padding: 8px 15px;
+      text-decoration: none;
+      color: $light-blue;
+      border: 2px solid $light-blue;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover {
+        background-color: $light-blue;
+        color: $very-dark;
+      }
+    }
+
+    .logOut {
+      padding: 9px 10px;
+      background-color: transparent;
+      border-color: $light-red;
+      color: $light-red;
+      display: none;
+
+      &:hover {
+        background-color: $light-red;
+        color: $very-dark;
+      }
+    }
+  }
+  // end of log in
+  // start of log out box
+  .log-out-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    @include sizing(40%, max-content);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px 5px rgba($very-dark, 0.4);
+    background-color: $dark-light;
+    color: $light-yellow;
+    z-index: 99999999999999;
+    opacity: 0;
+    visibility: hidden;
+
+    .log-out-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: $light-red;
+    }
+
+    .log-out-title {
+      font-size: 2rem;
+    }
+
+    .log-out-text {
+      margin: 20px 0;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .log-out-btn {
+      width: 40%;
+      padding: 10px;
+      background-color: transparent;
+      border: 2px solid $light-red;
+      border-radius: 10px;
+      outline: none;
+      color: $light-red;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: 700;
+      transition: all 0.2s;
+
+      &:hover {
+        background-color: $light-red;
+        color: $light-yellow;
+      }
+    }
+
+    &.show {
+      animation: showBox 0.3s linear forwards;
+    }
+
+    @keyframes showBox {
+      0% {
+        visibility: hidden;
+        opacity: 0;
+      }
+      10% {
+        visibility: visible;
+      }
+      100% {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+  // end of log out box
+  // responsive
+  @media screen and (max-width: 760px) {
+    .log-out-box {
+      width: 80%;
+    }
+  }
+  @media screen and (max-width: 400px) {
+    .log-out-box {
+      width: 90%;
+      .log-out-title {
+        font-size: 1.5rem;
+      }
+      .log-out-btn {
+        width: 60%;
+      }
+    }
+  }
 }
+// end of nav
+// start of green text
+.green-text {
+  color: $light-green;
+}
+// end of green text
