@@ -50,8 +50,64 @@ header {
 // end of left box
 
 // end of header
-// start of green text
-.green-text {
-  color: $light-green;
+// start of main
+.main {
+  position: relative;
+  @include sizing(100%, auto);
+  // start of svg
+  .custom-shape-divider-top-1692537920 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  .custom-shape-divider-top-1692537920 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 150px;
+  }
+
+  .custom-shape-divider-top-1692537920 .shape-fill {
+    fill: #111417;
+  }
+  // end of svg
+  // start of post container
+  .home-post-container {
+    @include sizing(100%, auto);
+    padding-top: 120px;
+    padding-bottom: 20px;
+
+    .home-post-header {
+      @include sizing(100%, auto);
+      @include flex(column, flex-start, center);
+      margin-left: 20px;
+      row-gap: 5px;
+
+      &-title {
+        font-size: 2rem;
+      }
+
+      .home-post-header-line {
+        @include sizing(80%, 3px);
+        background-color: $very-dark;
+        border-radius: 10px;
+      }
+    }
+  }
+  .post-box {
+    width: 100%;
+    @include flex();
+  }
+  .post-container {
+    @include sizing(90%, auto);
+    @include grid(repeat(3, 1fr), auto);
+    gap: 20px;
+    padding: 30px 50px;
+  }
+  // end of post container
 }
-// end of green text
+// end of main

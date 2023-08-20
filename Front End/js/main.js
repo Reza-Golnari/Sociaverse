@@ -1,9 +1,11 @@
 import { $, isLoggedIn, sendRefreshToken, logOutBtnHandler } from "./basic.js";
 import { CreateBox } from "../components/main-menu/main-menu.js";
 import { CreateHamburgerMenu } from "../components/hamburger-menu/hamburger-menu.js";
+import { PostCard } from "../components/postCard/post-card.js";
 
 window.customElements.define("main-menu", CreateBox);
 window.customElements.define("hamburger-menu", CreateHamburgerMenu);
+window.customElements.define("post-card", PostCard);
 
 let mainMenu = $.querySelector("main-menu");
 let hamburgerMenu = $.querySelector("hamburger-menu");

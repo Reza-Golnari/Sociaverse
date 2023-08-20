@@ -50,6 +50,10 @@ $font-roboto: "Roboto", sans-serif;
     background-color: $light-green;
     color: $dark;
   }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 body {
