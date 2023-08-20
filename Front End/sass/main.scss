@@ -54,6 +54,7 @@ header {
 .main {
   position: relative;
   @include sizing(100%, auto);
+  margin-bottom: 300px;
   // start of svg
   .custom-shape-divider-top-1692537920 {
     position: absolute;
@@ -77,6 +78,7 @@ header {
   // end of svg
   // start of post container
   .home-post-container {
+    display: none;
     @include sizing(100%, auto);
     padding-top: 120px;
     padding-bottom: 20px;
@@ -109,5 +111,34 @@ header {
     padding: 30px 50px;
   }
   // end of post container
+  // start of attention box
+  .attention-box {
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    @include sizing(80%, 100px);
+    margin: 0 auto;
+    background-color: rgba($light-yellow, 0.8);
+    filter: drop-shadow(0 2px 10px $light-yellow);
+    padding: 20px;
+    border-radius: 10px;
+
+    .box-header {
+      width: 100%;
+      @include flex(row, center, flex-start);
+
+      .box-title {
+        @include flex();
+        column-gap: 5px;
+        font-size: 1.2rem;
+      }
+    }
+
+    .box-body {
+      margin-top: 20px;
+    }
+  }
+  // box of attention box
 }
 // end of main
