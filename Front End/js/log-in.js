@@ -7,7 +7,10 @@ import {
   sendRefreshToken,
   logOutBtnHandler,
 } from "./basic.js";
+
 import { CreateBox } from "../components/main-menu/main-menu.js";
+import { CreateHamburgerMenu } from "../components/hamburger-menu/hamburger-menu.js";
+window.customElements.define("hamburger-menu", CreateHamburgerMenu);
 window.customElements.define("main-menu", CreateBox);
 
 const formBtn = $.querySelector(".form-btn");
@@ -19,6 +22,46 @@ let alert = $.querySelector(".alert");
 const loadingBox = $.querySelector(".loading-box");
 const loadingBoxTitle = $.querySelector(".loading-title");
 const loadingBoxText = $.querySelector(".loading-text");
+
+let mainMenu = $.querySelector("main-menu");
+let hamburgerMenu = $.querySelector("hamburger-menu");
+
+const loginBtn = mainMenu.shadowRoot.querySelector(".logIn");
+const logoutBtn = mainMenu.shadowRoot.querySelector(".logOut");
+const logoutBox = mainMenu.shadowRoot.querySelector(".log-out-box");
+const logoutClose = mainMenu.shadowRoot.querySelector(".log-out-close");
+const logOutClick = mainMenu.shadowRoot.querySelector(".log-out-btn");
+
+const hamburgerLogInBtn = hamburgerMenu.shadowRoot.querySelector(".loginBtn");
+const hamburgerLogOutBtn = hamburgerMenu.shadowRoot.querySelector(".logoutBtn");
+const hamburgerLogoutBox =
+  hamburgerMenu.shadowRoot.querySelector(".log-out-box");
+const hamburgerLogoutClose =
+  hamburgerMenu.shadowRoot.querySelector(".log-out-close");
+const hamburgerLogoutClick =
+  hamburgerMenu.shadowRoot.querySelector(".log-out-btn");
+
+window.addEventListener("load", async () => {
+  if (
+    isLoggedIn(loginBtn, logoutBtn) &&
+    isLoggedIn(hamburgerLogInBtn, hamburgerLogOutBtn)
+  ) {
+    return;
+  } else {
+    await sendRefreshToken();
+    isLoggedIn(loginBtn, logoutBtn);
+    isLoggedIn(hamburgerLogInBtn, hamburgerLogOutBtn);
+  }
+});
+
+logOutBtnHandler(logoutBtn, logoutBox, logoutClose, logOutClick);
+
+logOutBtnHandler(
+  hamburgerLogOutBtn,
+  hamburgerLogoutBox,
+  hamburgerLogoutClose,
+  hamburgerLogoutClick
+);
 
 // eye icon handler
 eyeIcon.addEventListener("click", () => {
@@ -128,31 +171,3 @@ function saveToken(data) {
     console.log("error");
   }
 }
-
-let mainMenu = $.querySelector("main-menu");
-
-const loginBtn = mainMenu.shadowRoot.querySelector(".logIn");
-const logoutBtn = mainMenu.shadowRoot.querySelector(".logOut");
-const logoutBox = mainMenu.shadowRoot.querySelector(".log-out-box");
-const logoutClose = mainMenu.shadowRoot.querySelector(".log-out-close");
-const logOutClick = mainMenu.shadowRoot.querySelector(".log-out-btn");
-const leftBox = mainMenu.shadowRoot.querySelector(".left-box");
-const rightBox = mainMenu.shadowRoot.querySelector(".right-box");
-
-window.addEventListener("load", async () => {
-  if (isLoggedIn(loginBtn, logoutBtn)) {
-    return;
-  } else {
-    await sendRefreshToken();
-    isLoggedIn(loginBtn, logoutBtn);
-  }
-});
-
-logOutBtnHandler(
-  logoutBtn,
-  logoutBox,
-  leftBox,
-  rightBox,
-  logoutClose,
-  logOutClick
-);

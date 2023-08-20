@@ -97,12 +97,12 @@ function inputProblem(inputList) {
 function isLoggedIn(logInElem, logOutElem) {
   if (foundCookie(" token")) {
     logInElem.style.display = "none";
-    logOutElem.style.display = "block";
+    logOutElem.style.display = "flex";
     logOutElem.style.fontSize = "1rem";
     logOutElem.style.fontWeight = "700";
     return true;
   } else {
-    logInElem.style.display = "block";
+    logInElem.style.display = "flex";
     logOutElem.style.display = "none";
     return false;
   }
@@ -146,11 +146,11 @@ function setExpires(day) {
 }
 
 // add event for log out btn
-function logOutBtnHandler(btn, box, bg1, bg2, closeBtn, clickBtn) {
+function logOutBtnHandler(btn, box, closeBtn, clickBtn) {
   btn.addEventListener("click", () => {
-    showLogOutBox(box, bg1, bg2);
+    showLogOutBox(box);
   });
-  hiddenLogOutBox(box, bg1, bg2, closeBtn);
+  hiddenLogOutBox(box, closeBtn);
   clickBtn.addEventListener("click", () => {
     document.cookie = `token=;path=/;expires=${setExpires(-50)}`;
     document.cookie = `refreshtoken=;path=/;expires=${setExpires(-50)}`;
@@ -159,20 +159,16 @@ function logOutBtnHandler(btn, box, bg1, bg2, closeBtn, clickBtn) {
 }
 
 // show log out box and add class show and blur background
-function showLogOutBox(box, bg1, bg2) {
+function showLogOutBox(box) {
   if (!box.classList.contains("show")) {
     box.classList.add("show");
-    bg1.style.filter = "blur(8px)";
-    bg2.style.filter = "blur(8px)";
   }
 }
 
 // hidden log out box by icon
-function hiddenLogOutBox(box, bg1, bg2, closeBtn) {
+function hiddenLogOutBox(box, closeBtn) {
   closeBtn.addEventListener("click", () => {
     box.classList.remove("show");
-    bg1.style.filter = "blur(0px)";
-    bg2.style.filter = "blur(0px)";
   });
 }
 

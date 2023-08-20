@@ -74,8 +74,6 @@ class CreateBox extends HTMLElement {
   connectedCallback() {
     let listItems = this.shadowRoot.querySelectorAll(".header-menu-link");
     let route = location.pathname;
-    console.log(route);
-    console.log(listItems);
 
     function removeActive() {
       listItems.forEach((item) => {

@@ -5,8 +5,11 @@
   @include flex(row, center, space-between);
   position: absolute;
   top: 0;
+  left: 0;
   padding: 10px 20px;
   background-color: $very-dark;
+
+  display: none;
   //   start of logo
   .logo {
     position: relative;
@@ -132,6 +135,78 @@
     }
   }
   //   end of hamburger box
+  // start of log out box
+  .log-out-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    @include sizing(70%, max-content);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px 5px rgba($very-dark, 0.4);
+    background-color: $dark-light;
+    color: $light-yellow;
+    z-index: 99999999999999999;
+    opacity: 0;
+    visibility: hidden;
+
+    .log-out-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: $light-red;
+    }
+
+    .log-out-title {
+      font-size: 2rem;
+    }
+
+    .log-out-text {
+      margin: 20px 0;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .log-out-btn {
+      width: 100%;
+      padding: 10px;
+      background-color: transparent;
+      border: 2px solid $light-red;
+      border-radius: 10px;
+      outline: none;
+      color: $light-red;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: 700;
+      transition: all 0.2s;
+
+      &:hover {
+        background-color: $light-red;
+        color: $light-yellow;
+      }
+    }
+
+    &.show {
+      animation: showBox 0.3s linear forwards;
+    }
+
+    @keyframes showBox {
+      0% {
+        visibility: hidden;
+        opacity: 0;
+      }
+      10% {
+        visibility: visible;
+      }
+      100% {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+  // end of log out box
 }
 // responsive
 
@@ -147,5 +222,11 @@
   .side-logo {
     padding-top: 10px !important;
     font-size: 1.3rem !important;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .hamburger-navbar {
+    display: flex;
   }
 }
