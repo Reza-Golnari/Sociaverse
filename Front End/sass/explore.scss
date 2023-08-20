@@ -37,6 +37,12 @@
         @include flex();
         border-bottom: 1px solid rgba($very-dark, 0.5);
       }
+      &-header-img {
+        @include flex();
+        img {
+          @include sizing(100%, 100%);
+        }
+      }
 
       &-body {
         @include sizing(100%, max-content);
