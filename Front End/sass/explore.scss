@@ -97,3 +97,23 @@
     }
   }
 }
+
+// responsive
+@media screen and (max-width: 1150px) {
+  .card-container {
+    width: 90% !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+@media screen and (max-width: 850px) {
+  .card-container {
+    width: 90% !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media screen and (max-width: 630px) {
+  .card-container {
+    width: 70% !important;
+    grid-template-columns: 1fr !important;
+  }
+}
