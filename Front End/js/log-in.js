@@ -10,6 +10,9 @@ import {
 
 import { CreateBox } from "../components/main-menu/main-menu.js";
 import { CreateHamburgerMenu } from "../components/hamburger-menu/hamburger-menu.js";
+import { CreateFooter } from "../components/footer/footer.js";
+
+window.customElements.define("site-footer", CreateFooter);
 window.customElements.define("hamburger-menu", CreateHamburgerMenu);
 window.customElements.define("main-menu", CreateBox);
 

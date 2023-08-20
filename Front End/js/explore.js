@@ -2,7 +2,9 @@ import { $, isLoggedIn, sendRefreshToken, logOutBtnHandler } from "./basic.js";
 import { CreateBox } from "../components/main-menu/main-menu.js";
 import { CreateHamburgerMenu } from "../components/hamburger-menu/hamburger-menu.js";
 import { PostCard } from "../components/postCard/post-card.js";
+import { CreateFooter } from "../components/footer/footer.js";
 
+window.customElements.define("site-footer", CreateFooter);
 window.customElements.define("main-menu", CreateBox);
 window.customElements.define("hamburger-menu", CreateHamburgerMenu);
 window.customElements.define("post-card", PostCard);
