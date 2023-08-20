@@ -177,6 +177,19 @@ function foundRoute() {
   console.log(location.href);
 }
 
+// pop up handler
+function popUpHandler(popUp, scroll) {
+  if (scroll > 500) {
+    popUp.classList.remove("hide");
+    popUp.classList.add("show");
+  } else {
+    if (popUp.classList.contains("show")) {
+      popUp.classList.remove("show");
+      popUp.classList.add("hide");
+    }
+  }
+}
+
 export {
   $,
   showMessage,
@@ -189,4 +202,5 @@ export {
   setExpires,
   logOutBtnHandler,
   foundRoute,
+  popUpHandler,
 };

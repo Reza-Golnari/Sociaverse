@@ -141,23 +141,3 @@ header {
   // box of attention box
 }
 // end of main
-
-// footer
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  @include sizing(100%, 50px);
-  background-color: $light;
-  border: 1px solid rgba($dark, 0.5);
-  padding: 10px;
-  @include flex(row, center, space-around);
-
-  &-title {
-    color: rgba($dark, 0.8);
-  }
-
-  &-link {
-    color: $very-dark;
-  }
-}

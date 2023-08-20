@@ -1,8 +1,16 @@
-import { $, isLoggedIn, sendRefreshToken, logOutBtnHandler } from "./basic.js";
+import {
+  $,
+  isLoggedIn,
+  sendRefreshToken,
+  logOutBtnHandler,
+  popUpHandler,
+} from "./basic.js";
 import { CreateBox } from "../components/main-menu/main-menu.js";
 import { CreateHamburgerMenu } from "../components/hamburger-menu/hamburger-menu.js";
 import { CreateFooter } from "../components/footer/footer.js";
+import { CreatePopUp } from "../components/pop up/pop-up.js";
 
+window.customElements.define("pop-up", CreatePopUp);
 window.customElements.define("main-menu", CreateBox);
 window.customElements.define("site-footer", CreateFooter);
 window.customElements.define("hamburger-menu", CreateHamburgerMenu);
@@ -46,3 +54,14 @@ logOutBtnHandler(
   hamburgerLogoutClose,
   hamburgerLogoutClick
 );
+
+const container = document.querySelector(".container");
+const popUp = document
+  .querySelector("pop-up")
+  .shadowRoot.querySelector(".pop-up");
+let scroll;
+
+container.addEventListener("scroll", () => {
+  scroll = container.scrollTop;
+  popUpHandler(popUp, scroll);
+});

@@ -44,7 +44,6 @@ class PostCard extends HTMLElement {
   connectedCallback() {
     const titleBox = this.shadowRoot.querySelector(".card-header-title");
     const imgBox = this.shadowRoot.querySelector(".card-header-img");
-    console.log(titleBox, imgBox);
     imgBox.style.display = "none";
     titleBox.style.display = "flex";
   }

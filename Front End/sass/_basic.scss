@@ -68,6 +68,7 @@ body {
   @include sizing(100%, 100vh);
   font-family: $font-roboto;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 .green-text {

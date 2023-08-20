@@ -1,9 +1,17 @@
-import { $, isLoggedIn, sendRefreshToken, logOutBtnHandler } from "./basic.js";
+import {
+  $,
+  isLoggedIn,
+  sendRefreshToken,
+  logOutBtnHandler,
+  popUpHandler,
+} from "./basic.js";
 import { CreateBox } from "../components/main-menu/main-menu.js";
 import { CreateHamburgerMenu } from "../components/hamburger-menu/hamburger-menu.js";
 import { PostCard } from "../components/postCard/post-card.js";
 import { CreateFooter } from "../components/footer/footer.js";
+import { CreatePopUp } from "../components/pop up/pop-up.js";
 
+window.customElements.define("pop-up", CreatePopUp);
 window.customElements.define("main-menu", CreateBox);
 window.customElements.define("hamburger-menu", CreateHamburgerMenu);
 window.customElements.define("post-card", PostCard);
@@ -38,7 +46,7 @@ window.addEventListener("load", async () => {
   ) {
     postContainer.style.display = "block";
     attentionBox.style.display = "none";
-    mainSection.style.marginBottom = "50px";
+    mainSection.style.marginBottom = "70px";
     return;
   } else {
     await sendRefreshToken();
@@ -46,7 +54,7 @@ window.addEventListener("load", async () => {
     isLoggedIn(hamburgerLogInBtn, hamburgerLogOutBtn);
     postContainer.style.display = "none";
     attentionBox.style.display = "block";
-    mainSection.style.marginBottom = "300px";
+    mainSection.style.marginBottom = "320px";
   }
 });
 
@@ -58,3 +66,14 @@ logOutBtnHandler(
   hamburgerLogoutClose,
   hamburgerLogoutClick
 );
+
+const container = document.querySelector(".container");
+const popUp = document
+  .querySelector("pop-up")
+  .shadowRoot.querySelector(".pop-up");
+let scroll;
+
+container.addEventListener("scroll", () => {
+  scroll = container.scrollTop;
+  popUpHandler(popUp, scroll);
+});
