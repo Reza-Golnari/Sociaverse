@@ -1,1 +1,99 @@
 @import "basic";
+
+.header {
+  margin-top: 70px;
+  padding: 20px;
+  @include sizing(100%, auto);
+  text-align: center;
+  &-title {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  &-text {
+    opacity: 0.8;
+    font-size: 1.1rem;
+  }
+}
+
+.main {
+  @include sizing(100%, auto);
+  scroll-behavior: smooth;
+  padding-top: 20px;
+  .card-container {
+    margin: 0 auto;
+    @include sizing(1100px, 100%);
+    @include grid(repeat(4, 1fr), auto);
+    gap: 20px;
+
+    .card {
+      border-radius: 10px;
+      @include flex(column, center, center);
+      box-shadow: 0 2px 15px rgba($very-dark, 0.5);
+      border: 2px solid rgba($very-dark, 0.5);
+      overflow: hidden;
+      &-header {
+        @include sizing(100%, 200px);
+        background-color: light;
+        @include flex();
+        border-bottom: 1px solid rgba($very-dark, 0.5);
+      }
+
+      &-body {
+        @include sizing(100%, max-content);
+        padding: 10px 5px;
+        @include flex(column);
+        row-gap: 10px;
+        border-bottom: 1px solid rgba($very-dark, 0.5);
+
+        &-text {
+          width: 100%;
+          p {
+            width: 100%;
+            padding: 5px;
+            word-wrap: break-word;
+          }
+        }
+
+        &-buttons {
+          @include sizing(100%, auto);
+          @include flex();
+
+          .card-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: $light-blue;
+            color: $very-dark;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 10px;
+            font-weight: 600;
+          }
+        }
+      }
+      &-footer {
+        @include sizing(100%, auto);
+        padding: 10px 5px;
+        padding-top: 15px;
+        @include flex(row, center, space-between);
+
+        &-span {
+          opacity: 0.6;
+          @include flex();
+          column-gap: 2px;
+          font-weight: 700;
+          cursor: default;
+          transition: all 0.2s linear;
+
+          &:hover {
+            color: $light-red;
+            opacity: 1;
+          }
+
+          i {
+            margin-bottom: 2px;
+          }
+        }
+      }
+    }
+  }
+}

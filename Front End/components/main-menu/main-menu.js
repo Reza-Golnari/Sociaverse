@@ -2,9 +2,9 @@ const template = document.createElement("template");
 template.innerHTML = `
 <link rel="stylesheet" href="./components/main-menu/css/main-menu.min.css">
 <link
-      rel="stylesheet"
-      href="./icon/fontawesome-free-6.4.0-web/css/all.min.css"
-    />
+rel="stylesheet"
+href="./icon/fontawesome-free-6.4.0-web/css/all.min.css"
+/>
 <!-- start of nav -->
 <nav class="navbar" id="main-menu">
   <!-- start of logo -->

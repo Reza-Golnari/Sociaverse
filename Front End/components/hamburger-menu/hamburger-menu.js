@@ -3,9 +3,9 @@ const template = document.createElement("template");
 template.innerHTML = `
 <link rel="stylesheet" href="./components/hamburger-menu/css/hamburger-menu.min.css">
 <link
-      rel="stylesheet"
-      href="./icon/fontawesome-free-6.4.0-web/css/all.min.css"
-    />
+rel="stylesheet"
+href="./icon/fontawesome-free-6.4.0-web/css/all.min.css"
+/>
 <!-- start of hamburger-menu -->
 <nav class="hamburger-navbar">
   <!-- start of logo -->

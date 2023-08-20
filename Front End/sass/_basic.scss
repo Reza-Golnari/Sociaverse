@@ -45,6 +45,11 @@ $font-roboto: "Roboto", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  &::selection {
+    background-color: $light-green;
+    color: $dark;
+  }
 }
 
 body {
@@ -59,4 +64,11 @@ body {
   @include sizing(100%, 100vh);
   font-family: $font-roboto;
   overflow-x: hidden;
+}
+
+.green-text {
+  color: $light-green;
+}
+.blue-text {
+  color: $light-blue;
 }
