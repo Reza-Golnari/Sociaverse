@@ -78,7 +78,6 @@ header {
   // end of svg
   // start of post container
   .home-post-container {
-    display: none;
     @include sizing(100%, auto);
     padding-top: 120px;
     padding-bottom: 20px;

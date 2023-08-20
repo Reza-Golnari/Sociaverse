@@ -7,6 +7,10 @@ window.customElements.define("main-menu", CreateBox);
 window.customElements.define("hamburger-menu", CreateHamburgerMenu);
 window.customElements.define("post-card", PostCard);
 
+const postContainer = $.querySelector(".home-post-container");
+const attentionBox = $.querySelector(".attention-box");
+const mainSection = $.querySelector("main");
+
 let mainMenu = $.querySelector("main-menu");
 let hamburgerMenu = $.querySelector("hamburger-menu");
 
@@ -30,11 +34,17 @@ window.addEventListener("load", async () => {
     isLoggedIn(loginBtn, logoutBtn) &&
     isLoggedIn(hamburgerLogInBtn, hamburgerLogOutBtn)
   ) {
+    postContainer.style.display = "block";
+    attentionBox.style.display = "none";
+    mainSection.style.marginBottom = "50px";
     return;
   } else {
     await sendRefreshToken();
     isLoggedIn(loginBtn, logoutBtn);
     isLoggedIn(hamburgerLogInBtn, hamburgerLogOutBtn);
+    postContainer.style.display = "none";
+    attentionBox.style.display = "block";
+    mainSection.style.marginBottom = "300px";
   }
 });
 
