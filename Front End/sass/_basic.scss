@@ -48,12 +48,15 @@ $font-roboto: "Roboto", sans-serif;
 }
 
 body {
+  position: relative;
   font-family: $font-roboto;
+  @include sizing(100%, auto);
+  overflow-x: hidden;
 }
 
 .container {
   position: relative;
-  @include sizing(100%, auto);
+  @include sizing(100%, 100vh);
   font-family: $font-roboto;
   overflow-x: hidden;
 }

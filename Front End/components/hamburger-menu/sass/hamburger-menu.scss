@@ -6,8 +6,10 @@
   position: absolute;
   top: 0;
   left: 0;
+  right: 0;
   padding: 10px 20px;
   background-color: $very-dark;
+  box-shadow: 0 2px 15px rgba($very-dark, 0.5);
 
   display: none;
   //   start of logo
@@ -79,7 +81,7 @@
   //   end of hamburger icon
   //   start of hamburger box
   .hamburger-menu-box {
-    @include sizing(40%, 100vh);
+    @include sizing(40%, 100%);
     background-color: $very-dark;
     position: fixed;
     top: 0;
