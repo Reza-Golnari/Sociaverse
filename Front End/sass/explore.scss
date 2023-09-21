@@ -19,6 +19,7 @@
   @include sizing(100%, auto);
   scroll-behavior: smooth;
   padding-top: 20px;
+  padding-bottom: 80px;
   .card-container {
     margin: 0 auto;
     @include sizing(1100px, 100%);
