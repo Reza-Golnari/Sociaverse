@@ -58,7 +58,7 @@ header {
   // start of svg
   .custom-shape-divider-top-1692537920 {
     position: absolute;
-    top: 0;
+    top: -1px;
     left: 0;
     width: 100%;
     overflow: hidden;
@@ -142,6 +142,21 @@ header {
 }
 // end of main
 // responsive
+@media screen and (max-width: 1295px) {
+  .content-box {
+    height: 100% !important;
+    width: 70% !important;
+  }
+}
+@media screen and (max-width: 980px) {
+  .content-box {
+    height: 90% !important;
+    .header-title {
+      font-size: 2.3rem !important;
+    }
+  }
+}
+
 @media screen and (max-width: 920px) {
   .post-container {
     padding: 30px 0 !important;
@@ -150,9 +165,15 @@ header {
 @media screen and (max-width: 800px) {
   .left-box {
     width: 60%;
-
-    .content-box {
-      width: 70%;
+  }
+}
+@media screen and (max-width: 980px) {
+  .content-box {
+    .header-title {
+      font-size: 2rem !important;
+    }
+    .header-parag {
+      font-size: 1rem !important;
     }
   }
 }
@@ -194,7 +215,7 @@ header {
       justify-content: center;
     }
     .content-box {
-      width: 80% !important;
+      width: 90% !important;
     }
   }
   .custom-shape-divider-top-1692537920.shape {
@@ -204,9 +225,22 @@ header {
     padding-top: 50px !important;
   }
 }
+
 @media screen and (max-width: 550px) {
   .post-container {
     padding: 30px !important;
     @include grid(repeat(1, 1fr) !important, auto);
+  }
+}
+
+@media screen and (max-width: 520px) {
+  header {
+    height: 500px !important;
+    padding-bottom: 10px;
+  }
+}
+@media screen and (max-width: 330px) {
+  header {
+    height: 600px !important;
   }
 }
