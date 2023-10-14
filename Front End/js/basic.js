@@ -132,7 +132,6 @@ async function sendRefreshToken() {
 
 // save token after sending refresh token
 function saveTokenAfterRefreshToken(token) {
-  console.log(token);
   document.cookie = `token=${token};path=/;expires=${setExpires(1)}`;
 }
 
@@ -190,6 +189,18 @@ function popUpHandler(popUp, scroll) {
   }
 }
 
+// find token from cookie
+function findToken() {
+  let cookiesArray = document.cookie.split(";");
+  let token;
+  cookiesArray.find((cookie) => {
+    if (cookie.includes(" token")) {
+      token = cookie.split("=")[1];
+    }
+  });
+  return token;
+}
+
 export {
   $,
   showMessage,
@@ -203,4 +214,5 @@ export {
   logOutBtnHandler,
   foundRoute,
   popUpHandler,
+  findToken,
 };

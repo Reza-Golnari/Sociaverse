@@ -152,7 +152,6 @@ formBtn.addEventListener("click", async () => {
 function saveToken(data) {
   let token = data.access;
   let refreshToken = data.refresh;
-
   try {
     document.cookie = `token=${token};path=/;expires=${setExpires(1)}`;
     document.cookie = `refreshtoken=${refreshToken};path=/;expires=${setExpires(

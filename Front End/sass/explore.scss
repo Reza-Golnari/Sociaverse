@@ -22,105 +22,91 @@
   padding-bottom: 80px;
   .card-container {
     margin: 0 auto;
-    @include sizing(1100px, 100%);
-    @include grid(repeat(4, 1fr), auto);
+    @include sizing(max-content, 100%);
+    @include grid(repeat(3, 300px), 300px);
     gap: 20px;
-
-    .card {
-      border-radius: 10px;
-      @include flex(column, center, center);
-      box-shadow: 0 2px 15px rgba($very-dark, 0.5);
-      border: 2px solid rgba($very-dark, 0.5);
-      overflow: hidden;
-      &-header {
-        @include sizing(100%, 200px);
-        background-color: light;
-        @include flex();
-        border-bottom: 1px solid rgba($very-dark, 0.5);
-      }
-      &-header-img {
-        @include flex();
-        img {
-          @include sizing(100%, 100%);
-        }
-      }
-
-      &-body {
-        @include sizing(100%, max-content);
-        padding: 10px 5px;
-        @include flex(column);
-        row-gap: 10px;
-        border-bottom: 1px solid rgba($very-dark, 0.5);
-
-        &-text {
-          width: 100%;
-          p {
-            width: 100%;
-            padding: 5px;
-            word-wrap: break-word;
-          }
-        }
-
-        &-buttons {
-          @include sizing(100%, auto);
-          @include flex();
-
-          .card-btn {
-            width: 100%;
-            padding: 10px;
-            background-color: $light-blue;
-            color: $very-dark;
-            text-decoration: none;
-            text-align: center;
-            border-radius: 10px;
-            font-weight: 600;
-          }
-        }
-      }
-      &-footer {
-        @include sizing(100%, auto);
-        padding: 10px 5px;
-        padding-top: 15px;
-        @include flex(row, center, space-between);
-
-        &-span {
-          opacity: 0.6;
-          @include flex();
-          column-gap: 2px;
-          font-weight: 700;
-          cursor: default;
-          transition: all 0.2s linear;
-
-          &:hover {
-            color: $light-red;
-            opacity: 1;
-          }
-
-          i {
-            margin-bottom: 2px;
-          }
-        }
-      }
-    }
   }
 }
+
+// .card {
+//   width: 300px;
+//   min-width: 300px;
+//   max-width: 300px;
+//   height: 100%;
+//   border-radius: 10px;
+//   overflow: hidden;
+//   box-shadow: 0 5px 15px rgba(#000, 0.4);
+//   @include flex(column, flex-start, flex-start);
+// }
+
+// .text-card {
+//   &__header {
+//     width: 100%;
+//     max-height: 65px;
+//     min-height: 65px;
+//     padding: 10px;
+//     border-bottom: 1px solid rgba(#000, 0.4);
+
+//     &__title {
+//       @include sizing(100%, 40px);
+//       display: -webkit-box;
+//       -webkit-line-clamp: 2;
+//       -webkit-box-orient: vertical;
+//       overflow: hidden;
+//       text-overflow: ellipsis;
+//       text-decoration: none;
+//       color: #111;
+//       font-weight: 700;
+//       font-size: 1.2rem;
+//       word-wrap: break-word;
+//     }
+//   }
+
+//   &__body {
+//     height: 100%;
+//     padding: 10px;
+
+//     &__paragraph {
+//       @include sizing(100%, 100%);
+//       display: -webkit-box;
+//       -webkit-line-clamp: 9;
+//       -webkit-box-orient: vertical;
+//       overflow: hidden;
+//       text-overflow: ellipsis;
+//     }
+//   }
+//   &__footer {
+//     width: 100%;
+//     height: max-content;
+//     @include grid(repeat(3, 96px), 1fr);
+//     padding: 15px 5px;
+//     color: rgba(#000, 0.7);
+//     font-weight: 700;
+
+//     &__user {
+//       display: block;
+//       color: rgba(#000, 0.7);
+//       text-overflow: ellipsis;
+//       overflow: hidden;
+//       white-space: nowrap;
+//     }
+//     &__date {
+//       text-align: center;
+//     }
+//     &__time {
+//       text-align: end;
+//     }
+//   }
+// }
 
 // responsive
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 980px) {
   .card-container {
-    width: 90% !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-  }
-}
-@media screen and (max-width: 850px) {
-  .card-container {
-    width: 90% !important;
     grid-template-columns: repeat(2, 1fr) !important;
   }
 }
-@media screen and (max-width: 630px) {
+@media screen and (max-width: 660px) {
   .card-container {
-    width: 70% !important;
     grid-template-columns: 1fr !important;
   }
 }
