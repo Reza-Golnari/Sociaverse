@@ -116,7 +116,7 @@ header {
     top: 150px;
     left: 50%;
     transform: translateX(-50%);
-    @include sizing(80%, 100px);
+    @include sizing(80%, max-content);
     margin: 0 auto;
     background-color: rgba($light-yellow, 0.8);
     filter: drop-shadow(0 2px 10px $light-yellow);
@@ -142,7 +142,7 @@ header {
 }
 // end of main
 // responsive
-@media screen and (max-width: 1295px) {
+@media screen and (max-width: 1180px) {
   .content-box {
     height: 100% !important;
     width: 70% !important;
@@ -223,6 +223,9 @@ header {
   }
   .home-post-container {
     padding-top: 50px !important;
+  }
+  .attention-box {
+    top: 30px !important;
   }
 }
 
