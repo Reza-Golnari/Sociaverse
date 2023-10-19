@@ -12,12 +12,14 @@ import { CreateHamburgerMenu } from "../components/hamburger-menu/hamburger-menu
 import { textCard } from "../components/text card/text-card.js";
 import { CreateFooter } from "../components/footer/footer.js";
 import { CreatePopUp } from "../components/pop up/pop-up.js";
+import { imgCard } from "../components/img card/img-card.js";
 
 window.customElements.define("pop-up", CreatePopUp);
 window.customElements.define("site-footer", CreateFooter);
 window.customElements.define("main-menu", CreateBox);
 window.customElements.define("hamburger-menu", CreateHamburgerMenu);
 window.customElements.define("text-card", textCard);
+window.customElements.define("img-card", imgCard);
 
 let mainMenu = $.querySelector("main-menu");
 let hamburgerMenu = $.querySelector("hamburger-menu");
@@ -74,30 +76,33 @@ container.addEventListener("scroll", () => {
 
 let fragment = document.createDocumentFragment();
 
-// axios("http://localhost:8000/explore")
-//   .then((res) => {
-//     // res.data.posts.forEach(post=>{
-
-//     // })
-
-//     res.data.posts.forEach((post) => {
-//       card = document.createElement("post-card");
-//       card.setAttribute("post-id", post.id);
-//       card.setAttribute("post-title", post.title);
-//       card.setAttribute("post-body", post.body);
-//       card.setAttribute("post-user", post.user);
-//       cardContainer.append(card);
-//       console.log(post);
-//     });
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
+axios("http://localhost:8000/explore")
+  .then((res) => {
+    res.data.posts.forEach((post) => {
+      console.log(post);
+      if (post.image) {
+        //codes
+      } else {
+        card = document.createElement("text-card");
+        card.setAttribute("post-id", post.id);
+        card.setAttribute("post-title", post.title);
+        card.setAttribute("post-body", post.body);
+        card.setAttribute("post-user", post.user);
+        card.setAttribute("post-slug", post.slug);
+        card.setAttribute("post-date", post.created);
+        fragment.append(card);
+      }
+    });
+    cardContainer.append(fragment);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 // const token = findToken();
 // const url = "http://localhost:8000/profile/post/create";
 // const data = {
-//   title: "Test Title",
+//   title: "Test Title aaaa",
 //   body: "Test Body ;sdlakfjas;dlkfjsad;flkjsadf;lksadjf;sadlfjsa;dfweqpruqwrpowrupweorpoqeruwqpeorqwproqweproqwurpoeqwrupqwruuopwirwpe qwperouwqrepuio",
 //   image: null,
 // };

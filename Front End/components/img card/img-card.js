@@ -1,36 +1,26 @@
 const template = document.createElement("template");
 
 template.innerHTML = `
-<link rel="stylesheet" href="./components/text card/css/text-card.min.css">
-    <div class="text-card card">
-    <div class="text-card__header">
-      <a href="" class="text-card__header__title">
+<link rel="stylesheet" href="./components/img card/css/img-card.min.css">
+    <div class="img-card card">
+    <div class="img-card__img-box">
+      <img class="img-card__img-box__img" src="./pic/6-300x200.jpg" />
+    </div>
+    <div class="img-card__header">
+      <a href="" class="img-card__header__title">
         Lorem ipsum dolor sit amet consectetur adipisicing elit.
         Obcaecati, esse.
       </a>
     </div>
-    <div class="text-card__body">
-      <p class="text-card__body__paragraph">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
-        ex ipsum quibusdam velit accusantium odit a voluptates laborum
-        eius non.Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Ullam ex ipsum quibusdam velit accusantium odit a
-        voluptates laborum eius non.Lorem ipsum dolor sit amet
-        consectetur adipisicing elit. Ullam ex ipsum quibusdam velit
-        accusantium odit a voluptates laborum eius non.Lorem ipsum dolor
-        sit amet consectetur adipisicing elit. Ullam ex ipsum quibusdam
-        velit accusantium odit a voluptates laborum eius non.
-      </p>
-    </div>
-    <div class="text-card__footer">
-      <a class="text-card__footer__user">Reza</a>
-      <p class="text-card__footer__date">2023-04-12</p>
-      <p class="text-card__footer__time">12:04</p>
+    <div class="img-card__footer">
+      <a class="img-card__footer__user">Reza</a>
+      <p class="img-card__footer__date">2023-04-12</p>
+      <p class="img-card__footer__time">12:04</p>
     </div>
   </div>
 `;
 
-class textCard extends HTMLElement {
+class imgCard extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -75,4 +65,4 @@ class textCard extends HTMLElement {
   }
 }
 
-export { textCard };
+export { imgCard };

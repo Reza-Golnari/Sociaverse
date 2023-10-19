@@ -15,6 +15,18 @@ from drf_spectacular.utils import extend_schema
 User = get_user_model()
 
 
+class CurrentUserView(APIView):
+    def get(self, request):
+        current_user = request.user
+
+        if not current_user.is_authenticated:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+        serializer = UserSerializer(current_user)
+
+        return Response(serializer.data)
+
+
 class UserProfileView(APIView):
     """
     API view to retrieve user profile information, posts, and follower count.

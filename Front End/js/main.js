@@ -7,14 +7,14 @@ import {
 } from "./basic.js";
 import { CreateBox } from "../components/main-menu/main-menu.js";
 import { CreateHamburgerMenu } from "../components/hamburger-menu/hamburger-menu.js";
-import { PostCard } from "../components/postCard/post-card.js";
+import { textCard } from "../components/text card/text-card.js";
 import { CreateFooter } from "../components/footer/footer.js";
 import { CreatePopUp } from "../components/pop up/pop-up.js";
 
 window.customElements.define("pop-up", CreatePopUp);
 window.customElements.define("main-menu", CreateBox);
 window.customElements.define("hamburger-menu", CreateHamburgerMenu);
-window.customElements.define("post-card", PostCard);
+window.customElements.define("text-card", textCard);
 window.customElements.define("site-footer", CreateFooter);
 
 const postContainer = $.querySelector(".home-post-container");

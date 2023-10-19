@@ -19,6 +19,8 @@ urlpatterns = [
          name="user_reset_confrim"),  # Password reset - confirm reset
     path("confrim/finish", views.UserPassComplete.as_view(),
          name="user_reset_complete"),  # Password reset - complete reset
+    path("verify/", views.UserVerifyView.as_view(),
+         name='verify'),  # Email verification
     path("api/token/", TokenObtainPairView.as_view(),
          name='token_obtain_pair'),  # Obtain token
     path("api/token/refresh/", TokenRefreshView.as_view(),
