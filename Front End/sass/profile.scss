@@ -9,6 +9,7 @@
     @include sizing(100%, max-content);
     // @include flex(row, center, flex-start);
     @include grid(repeat(2, 1fr), auto);
+    border-bottom: 1px solid rgba($color: #000000, $alpha: 0.3);
 
     &__profile-box {
       @include flex(column);
@@ -72,7 +73,7 @@
       &__left-box {
         grid-column: 1/3;
         &__user-bio {
-          margin-top: 10px;
+          margin: 10px 0;
           display: -webkit-box;
           -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
@@ -80,7 +81,7 @@
           text-overflow: ellipsis;
 
           .bio-title {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 700;
           }
         }
@@ -88,9 +89,10 @@
 
       &__right-box {
         @include flex();
-        align-items: flex-end;
 
         &__edit-link {
+          display: block;
+          width: 70%;
           padding: 10px;
           text-decoration: none;
           letter-spacing: 1px;
