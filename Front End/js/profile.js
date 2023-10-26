@@ -69,9 +69,9 @@ container.addEventListener("scroll", () => {
 
 const token = findToken();
 
-axios("http://localhost:8000/profile/current-user", {
+axios("http://localhost:8000/profile/get-current-user", {
   headers: {
-    Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk4MzI3NTk2LCJpYXQiOjE2OTc3MjI3OTYsImp0aSI6Ijg2YWVjODFhM2I4ODQwNTk4MTI5ZDEyYmE4M2RkOWVkIiwidXNlcl9pZCI6MX0.HUZRdA-uFk3VsABeJSn2yfB5cUbiHArTqhwnIslmk6g`,
+    Authorization: `Bearer ${token}`,
   },
 })
   .then((res) => {
