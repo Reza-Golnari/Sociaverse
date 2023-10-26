@@ -7,8 +7,6 @@ app_name = 'accounts'
 urlpatterns = [
     path('register/', views.UserRegisterView.as_view(),
          name='user_register'),  # User registration
-    path('login/', views.UserLoginView.as_view(),
-         name='user_login'),  # User login
     path('logout/', views.UserLogoutView.as_view(),
          name='user_logout'),  # User logou
     path("reset/main", views.UserPassReset.as_view(),
@@ -19,8 +17,6 @@ urlpatterns = [
          name="user_reset_confrim"),  # Password reset - confirm reset
     path("confrim/finish", views.UserPassComplete.as_view(),
          name="user_reset_complete"),  # Password reset - complete reset
-    path("verify/", views.UserVerifyView.as_view(),
-         name='verify'),  # Email verification
     path("api/token/", TokenObtainPairView.as_view(),
          name='token_obtain_pair'),  # Obtain token
     path("api/token/refresh/", TokenRefreshView.as_view(),

@@ -57,14 +57,6 @@ class UserRegisterSerializer(serializers.Serializer):
         return attrs
 
 
-class VerifySerializer(serializers.Serializer):
-    """
-    Serializer for verification code.
-    """
-
-    code = serializers.IntegerField(min_value=10000, max_value=99999)
-    # Field to input the verification code
-
 
 class UserLoginSerializer(serializers.Serializer):
     """

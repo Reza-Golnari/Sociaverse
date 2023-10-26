@@ -19,5 +19,5 @@ urlpatterns = [
     path('direct_list', views.DirectListView.as_view(), name="direct_list"),
     path('directs/<int:direct_id>/', views.DirectView.as_view(), name="directs"),
     path('send_direct/<str:username>/', views.SendDirectView.as_view(), name='create_direct'),
-    path('current-user/', views.CurrentUserView.as_view(), name='current-user')
+    path('get-current-user', views.CurrentUserView.as_view(), name='get_current_user')
 ]

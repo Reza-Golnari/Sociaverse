@@ -1,4 +1,4 @@
-from .serializers import UserUpdateSerializer
+from .serializers import UserUpdateSerializer, UserSerializer
 from django.shortcuts import get_object_or_404
 from .models import Poste, Relation, Comment, Vote, Directs
 from django.contrib import messages

@@ -4,7 +4,6 @@ import {
   sendRefreshToken,
   logOutBtnHandler,
   popUpHandler,
-  findToken,
 } from "./basic.js";
 
 import { CreateBox } from "../components/main-menu/main-menu.js";
@@ -98,18 +97,3 @@ axios("http://localhost:8000/explore")
   .catch((err) => {
     console.log(err);
   });
-
-// const token = findToken();
-// const url = "http://localhost:8000/profile/post/create";
-// const data = {
-//   title: "Test Title aaaa",
-//   body: "Test Body ;sdlakfjas;dlkfjsad;flkjsadf;lksadjf;sadlfjsa;dfweqpruqwrpowrupweorpoqeruwqpeorqwproqweproqwurpoeqwrupqwruuopwirwpe qwperouwqrepuio",
-//   image: null,
-// };
-// const config = {
-//   headers: { Authorization: `Bearer ${token}` },
-// };
-
-// axios.post(url, data, config);
-
-// console.log(findToken());

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import MyUsers, OneTimeCode
+from .models import MyUsers
 
 
 class NewUserAdmin(UserAdmin):
@@ -37,6 +37,3 @@ class NewUserAdmin(UserAdmin):
 
 # Register the MyUsers model with the customized NewUserAdmin
 admin.site.register(MyUsers, NewUserAdmin)
-
-# Register the OneTimeCode model
-admin.site.register(OneTimeCode)

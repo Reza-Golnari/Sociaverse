@@ -4,6 +4,7 @@ import {
   sendRefreshToken,
   logOutBtnHandler,
   popUpHandler,
+  findToken,
 } from "./basic.js";
 import { CreateBox } from "../components/main-menu/main-menu.js";
 import { CreateHamburgerMenu } from "../components/hamburger-menu/hamburger-menu.js";
@@ -65,3 +66,29 @@ container.addEventListener("scroll", () => {
   scroll = container.scrollTop;
   popUpHandler(popUp, scroll);
 });
+
+const token = findToken();
+
+axios("http://localhost:8000/profile/current-user", {
+  headers: {
+    Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk4MzI3NTk2LCJpYXQiOjE2OTc3MjI3OTYsImp0aSI6Ijg2YWVjODFhM2I4ODQwNTk4MTI5ZDEyYmE4M2RkOWVkIiwidXNlcl9pZCI6MX0.HUZRdA-uFk3VsABeJSn2yfB5cUbiHArTqhwnIslmk6g`,
+  },
+})
+  .then((res) => {
+    console.log(res);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+// const url = "http://localhost:8000/profile/post/create";
+// const data = {
+//   title: "Test Title aaaa",
+//   body: "Test Body ;sdlakfjas;dlkfjsad;flkjsadf;lksadjf;sadlfjsa;dfweqpruqwrpowrupweorpoqeruwqpeorqwproqweproqwurpoeqwrupqwruuopwirwpe qwperouwqrepuio",
+//   image: null,
+// };
+// const config = {
+//   headers: { Authorization: `Bearer ${token}` },
+// };
+
+// axios.post(url, data, config).then((res) => console.log(res));

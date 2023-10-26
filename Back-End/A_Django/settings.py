@@ -157,7 +157,6 @@ REST_FRAMEWORK = {
 
     # Use drf_spectacular AutoSchema for generating OpenAPI schema automatically
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
-    'DEFAULT_RENDERER_CLASSES': ('rest_framework.renderers.JSONRenderer',),
 
 }
 
