@@ -4,8 +4,8 @@ from . import views
 app_name = 'proof'
 urlpatterns = [
     path('<str:username>/', views.UserProfileView.as_view(), name="proof"),
-    path('post/<int:post_id>/<slug:post_slug>/',views.PostDetailView.as_view(), name='post_details'),
-    path('comment/create/<int:post_id>/<slug:post_slug>/',views.CommentCreateView.as_view(), name='comment_create'),
+    path('post/<int:post_id>/<slug:post_slug>/', views.PostDetailView.as_view(), name='post_details'),
+    path('comment/create/<int:post_id>/<slug:post_slug>/', views.CommentCreateView.as_view(), name='comment_create'),
     path('post/delete/<int:pk>/', views.PostDeleteView.as_view(), name="post_delete"),
     path('update/<int:post_id>/', views.PostUpdateView.as_view(), name="post_update"),
     path('post/create', views.PostCreateView.as_view(), name="post_create"),
@@ -19,5 +19,6 @@ urlpatterns = [
     path('direct_list', views.DirectListView.as_view(), name="direct_list"),
     path('directs/<int:direct_id>/', views.DirectView.as_view(), name="directs"),
     path('send_direct/<str:username>/', views.SendDirectView.as_view(), name='create_direct'),
+    path('list_posts/<str:username>/', views.ListPostsView.as_view(), name='list_posts'),
     path('get-current-user', views.CurrentUserView.as_view(), name='get_current_user')
 ]

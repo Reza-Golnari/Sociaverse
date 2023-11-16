@@ -27,6 +27,14 @@ class CurrentUserView(APIView):
         return Response(serializer.data)
 
 
+class ListPostsView(APIView):
+    def get(self, request, username):
+        user = User.objects.get(username=username)
+        posts = Poste.objects.filter(user=user)
+        serialized_posts = PosteSerializer(instance=posts, many=True)
+        return Response(data=serialized_posts.data, status=status.HTTP_200_OK)
+
+
 class UserProfileView(APIView):
     """
     API view to retrieve user profile information, posts, and follower count.

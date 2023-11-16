@@ -72,30 +72,44 @@ const userEmailElem = $.querySelector(".user-email");
 const userBioElem = $.querySelector(".user-bio");
 const userImgElem = $.querySelector(".main__header__profile-box__profile-img");
 const token = findToken();
+let userName;
 
-axios("http://localhost:8000/profile/get-current-user", {
-  headers: {
-    Authorization: `Bearer ${token}`,
-  },
-})
-  .then((res) => res.data)
-  .then((data) => {
-    console.log(data);
-    userNameElem.textContent = data.username;
-    userEmailElem.textContent = data.email;
-    if (data.bio) {
-      userBioElem.textContent = data.bio;
-    } else {
-      userBioElem.textContent = "Not Set.";
-    }
-
-    if (data.picture) {
-      userImgElem.src = data.picture;
-    }
+document.addEventListener("DOMContentLoaded", async () => {
+  await axios("http://localhost:8000/profile/get-current-user", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   })
-  .catch((err) => {
-    console.log(err);
-  });
+    .then((res) => res.data)
+    .then((data) => {
+      userNameElem.textContent = data.username;
+      userName = data.username;
+      userEmailElem.textContent = data.email;
+      if (data.bio) {
+        userBioElem.textContent = data.bio;
+      } else {
+        userBioElem.textContent = "Not Set.";
+      }
+
+      if (data.picture) {
+        userImgElem.src = data.picture;
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+  await axios(`http://localhost:8000/profile/list_posts/${userName}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((res) => res.data)
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((err) => console.log(err));
+});
 
 // const url = "http://localhost:8000/profile/post/create";
 // const data = {
