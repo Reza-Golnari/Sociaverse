@@ -101,36 +101,33 @@ class CreateHamburgerMenu extends HTMLElement {
       case "/index.html":
         removeActive();
         listItems[0].classList.add("active");
-        console.log("index");
         break;
       case "/log-in.html":
         removeActive();
-        console.log(icon);
-        console.log("log-in");
+        break;
+      case "/edit.html":
+        removeActive();
+        break;
+      case "/create-post.html":
+        removeActive();
         break;
       case "/sign-up.html":
         removeActive();
-        console.log(icon);
-        console.log("sign-up");
         break;
       case "/direct.html":
         removeActive();
         listItems[3].classList.add("active");
-        console.log("direct");
         break;
       case "/explore.html":
         removeActive();
         listItems[1].classList.add("active");
-        console.log("explore");
         break;
       case "/profile.html":
         removeActive();
         listItems[2].classList.add("active");
-        console.log("profile");
         break;
       case "/post-page.html":
         removeActive();
-        console.log("post");
         break;
 
       default:
