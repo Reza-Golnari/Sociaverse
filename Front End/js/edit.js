@@ -67,3 +67,37 @@ container.addEventListener("scroll", () => {
   scroll = container.scrollTop;
   popUpHandler(popUp, scroll);
 });
+
+const userNameElem = $.querySelector("#userName");
+const userEmailElem = $.querySelector("#userEmail");
+const userBioElem = $.querySelector("#bioArea");
+const userImgElem = $.querySelector("#MainProfileImg");
+let userName;
+
+document.addEventListener("DOMContentLoaded", async () => {
+  await axios("http://localhost:8000/profile/get-current-user", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((res) => res.data)
+    .then((data) => {
+      console.log(data);
+      userNameElem.value = data.username;
+      userEmailElem.value = data.email;
+      if (data.bio) {
+        userBioElem.textContent = data.bio;
+      } else {
+        userBioElem.textContent = "Not Set.";
+      }
+
+      if (data.picture) {
+        userImgElem.src = data.picture;
+      } else {
+        userImgElem.src = "./pic/images.png";
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});

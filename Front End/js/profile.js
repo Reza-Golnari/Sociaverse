@@ -82,6 +82,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   })
     .then((res) => res.data)
     .then((data) => {
+      console.log(data);
       userNameElem.textContent = data.username;
       userName = data.username;
       userEmailElem.textContent = data.email;

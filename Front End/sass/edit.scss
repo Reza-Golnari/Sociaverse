@@ -1,1 +1,141 @@
 @import "basic";
+
+.main {
+  margin: 90px auto;
+  margin-bottom: 60px;
+  width: 800px;
+  height: 80vh;
+  min-height: 650px;
+  box-shadow: 0 0 10px rgba(#000000, 0.2);
+  padding: 20px;
+  border-radius: 10px;
+  @include flex(column);
+
+  &__form {
+    @include flex(column);
+    row-gap: 35px;
+    #inputFile {
+      display: none;
+    }
+    .profileImgBox {
+      position: relative;
+      cursor: pointer;
+      @include flex();
+      border-radius: 50%;
+      .profileImg {
+        width: clamp(200px, 200px, 200px);
+        object-fit: cover;
+        border: 2px solid $light-green;
+        filter: drop-shadow(0 0 5px $light-green);
+        border-radius: 50%;
+      }
+      &::after {
+        content: "Click To Change";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 190px;
+        height: 190px;
+        @include flex();
+        background-color: #eeeeee8c;
+        border-radius: 50%;
+        z-index: 9;
+      }
+    }
+    .input-box {
+      width: 350px;
+      @include flex(row, center, space-between);
+      column-gap: 10px;
+      label {
+        min-width: max-content;
+      }
+      input {
+        all: unset;
+        width: 250px;
+        padding: 5px;
+        box-shadow: 0 0px 10px rgba(#000000, 0.2);
+        border-radius: 5px;
+        border: 1px solid rgba(#000000, 0.2);
+      }
+    }
+    .bio-box {
+      width: 350px;
+      @include flex(row, center, space-between);
+      column-gap: 10px;
+
+      label {
+        min-width: max-content;
+      }
+      textarea {
+        all: unset;
+        width: 250px;
+        height: 150px;
+        resize: none;
+        border: 1px solid rgba(#000000, 0.2);
+        box-shadow: 0 0 10px rgba(#000000, 0.2);
+        border-radius: 5px;
+        padding: 5px;
+        text-wrap: wrap;
+        word-wrap: break-word;
+      }
+    }
+    input[type="submit"] {
+      all: unset;
+      width: 150px;
+      text-align: center;
+      padding: 15px 20px;
+      border-radius: 8px;
+      background-color: $light-blue;
+      color: $white;
+      box-shadow: 0 2px 15px rgba(#000000, 0.4);
+      cursor: pointer;
+    }
+  }
+}
+
+@media screen and (max-width: 835px) {
+  .main {
+    width: 600px;
+  }
+}
+@media screen and (max-width: 630px) {
+  .main {
+    width: 300px;
+    min-height: 550px;
+  }
+  .profileImg {
+    max-width: 120px;
+    max-height: 120px;
+  }
+  .profileImgBox {
+    &::after {
+      max-width: 120px;
+      max-height: 120px;
+      font-size: 0.9rem;
+    }
+  }
+  .input-box {
+    width: 280px !important;
+    label {
+      font-size: 0.9rem;
+    }
+    input {
+      width: 100px;
+      font-size: 0.9rem !important;
+    }
+  }
+  .bio-box {
+    width: 280px !important;
+    label {
+      font-size: 0.9rem;
+    }
+    textarea {
+      font-size: 0.8rem !important;
+    }
+  }
+  input[type="submit"] {
+    width: 100px;
+    padding: 10px 20px !important;
+  }
+}

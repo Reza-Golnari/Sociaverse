@@ -16,6 +16,27 @@
       <main-menu></main-menu>
       <hamburger-menu></hamburger-menu>
       <!-- end of nav -->
+      <main class="main">
+        <form class="main__form">
+          <input type="file" accept="image/*" id="inputFile" />
+          <div class="profileImgBox">
+            <img src="" class="profileImg" id="MainProfileImg" />
+          </div>
+          <div class="input-box">
+            <label for="input">User Name : </label>
+            <input type="text" value="" id="userName" />
+          </div>
+          <div class="input-box">
+            <label for="input">Email : </label>
+            <input type="email" value="" id="userEmail" />
+          </div>
+          <div class="bio-box">
+            <label>Bio : </label>
+            <textarea minlength="0" maxlength="150" id="bioArea"></textarea>
+          </div>
+          <input type="submit" value="Save" />
+        </form>
+      </main>
       <!-- start of footer -->
       <site-footer></site-footer>
       <!-- end of footer -->

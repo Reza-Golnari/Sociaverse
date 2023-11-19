@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/create-post.min.css" />
+    <link
+      rel="stylesheet"
+      href="./icon/fontawesome-free-6.4.0-web/css/all.min.css"
+    />
+    <title>Create Post</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- start of nav -->
+      <main-menu></main-menu>
+      <hamburger-menu></hamburger-menu>
+      <!-- end of nav -->
+      <main class="main">
+        <form class="main__form">
+          <input type="file" accept="image/*" id="inputFile" />
+          <img src="" id="MainProfileImg" />
+        </form>
+      </main>
+      <!-- start of footer -->
+      <site-footer></site-footer>
+      <!-- end of footer -->
+    </div>
+    <!-- start pop up btn -->
+    <pop-up></pop-up>
+    <!-- end pop up btn -->
+
+    <!-- scripts -->
+    <script src="./js/axios/axios.min.js"></script>
+    <script type="module" src="./js/create-post.js"></script>
+  </body>
+</html>
