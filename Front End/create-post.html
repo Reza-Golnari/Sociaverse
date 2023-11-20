@@ -17,9 +17,26 @@
       <hamburger-menu></hamburger-menu>
       <!-- end of nav -->
       <main class="main">
+        <h2>Share Your <span class="blue-text">Post</span></h2>
         <form class="main__form">
-          <input type="file" accept="image/*" id="inputFile" />
-          <img src="" id="MainProfileImg" />
+          <div class="input-box">
+            <label>Image : </label>
+            <input type="file" accept="image/*" />
+          </div>
+          <div class="input-box">
+            <label class="post-title-label">Title : </label>
+            <input
+              type="text"
+              class="post-title-input"
+              maxlength="30"
+              placeholder="Post Title"
+            />
+          </div>
+          <div class="des-box">
+            <label class="post-description-label">Description : </label>
+            <textarea maxlength="200"></textarea>
+          </div>
+          <input type="submit" value="Share" class="submit" />
         </form>
       </main>
       <!-- start of footer -->

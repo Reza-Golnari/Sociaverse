@@ -1,1 +1,93 @@
 @import "basic";
+
+.main {
+  margin: 90px auto;
+  margin-bottom: 60px;
+  width: 800px;
+  height: 80vh;
+  min-height: 650px;
+  box-shadow: 0 0 10px rgba(#000000, 0.2);
+  padding: 20px;
+  border-radius: 10px;
+  @include flex(column, center, flex-start);
+  row-gap: 100px;
+
+  form {
+    @include flex(column, center, flex-start);
+    row-gap: 30px;
+
+    div {
+      @include flex(row, center, space-between);
+      column-gap: 20px;
+      width: 100%;
+
+      input[type="text"] {
+        all: unset;
+        width: 300px;
+        max-width: 300px;
+        padding: 5px;
+        box-shadow: 0 0px 10px rgba(#000000, 0.2);
+        border-radius: 5px;
+        border: 1px solid rgba(#000000, 0.2);
+      }
+
+      label {
+        min-width: max-content;
+      }
+
+      textarea {
+        all: unset;
+        width: 300px;
+        height: 150px;
+        resize: none;
+        border: 1px solid rgba(#000000, 0.2);
+        box-shadow: 0 0 10px rgba(#000000, 0.2);
+        border-radius: 5px;
+        padding: 5px;
+        text-wrap: wrap;
+        word-wrap: break-word;
+      }
+
+      input,
+      textarea {
+        width: 300px;
+      }
+    }
+    .submit {
+      all: unset;
+      width: 405px;
+      text-align: center;
+      padding: 10px 20px;
+      border-radius: 8px;
+      background-color: $light-blue;
+      color: $white;
+      box-shadow: 0 2px 15px rgba(#000000, 0.4);
+      cursor: pointer;
+    }
+  }
+}
+
+@media screen and (max-width: 835px) {
+  .main {
+    width: 600px;
+  }
+}
+@media screen and (max-width: 630px) {
+  .main {
+    width: 300px;
+    min-height: 550px;
+  }
+  form {
+    div {
+      width: 280px !important;
+      column-gap: 10px !important;
+    }
+  }
+  input {
+    width: 180px !important;
+    font-size: 0.9rem;
+  }
+  label {
+    font-size: 0.9rem;
+  }
+}
