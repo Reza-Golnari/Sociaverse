@@ -67,3 +67,33 @@ container.addEventListener("scroll", () => {
   scroll = container.scrollTop;
   popUpHandler(popUp, scroll);
 });
+
+const imgInput = document.querySelector(".img-input");
+const titleInput = document.querySelector(".post-title-input");
+const desInput = document.querySelector("textarea");
+const form = document.querySelector("form");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const formData = new FormData();
+  formData.append("title", titleInput.value);
+  formData.append("body", desInput.value);
+  if (imgInput.files[0]) {
+    formData.append("image", imgInput.files[0]);
+  }
+
+  await axios
+    .post("http://localhost:8000/profile/post/create", formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((res) => {
+      imgInput.files = null;
+      titleInput.value = "";
+      desInput.value = "";
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});

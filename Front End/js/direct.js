@@ -4,6 +4,7 @@ import {
   sendRefreshToken,
   logOutBtnHandler,
   popUpHandler,
+  findToken,
 } from "./basic.js";
 import { CreateBox } from "../components/main-menu/main-menu.js";
 import { CreateHamburgerMenu } from "../components/hamburger-menu/hamburger-menu.js";
@@ -65,3 +66,6 @@ container.addEventListener("scroll", () => {
   scroll = container.scrollTop;
   popUpHandler(popUp, scroll);
 });
+
+const token = findToken();
+console.log(token);

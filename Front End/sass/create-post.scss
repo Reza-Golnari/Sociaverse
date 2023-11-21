@@ -91,3 +91,31 @@
     font-size: 0.9rem;
   }
 }
+
+.loading-box {
+  position: absolute;
+  top: 20px;
+  left: -500px;
+  width: 300px;
+  background-color: $light-blue;
+  padding: 20px;
+  border-radius: 10px;
+  color: $light-green;
+  filter: drop-shadow(0 0 15px $light-blue);
+  z-index: 99999999999999999999;
+
+  .loading-title {
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+  }
+
+  &.active {
+    animation: showAlert 4s ease-in-out backwards;
+  }
+  &.error {
+    background-color: $light-red;
+    filter: drop-shadow(0 0 15px $light-red);
+    color: $dark;
+    animation: showAlert 6s ease-in-out backwards;
+  }
+}

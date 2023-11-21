@@ -21,7 +21,7 @@
         <form class="main__form">
           <div class="input-box">
             <label>Image : </label>
-            <input type="file" accept="image/*" />
+            <input type="file" accept="image/*" class="img-input" />
           </div>
           <div class="input-box">
             <label class="post-title-label">Title : </label>
@@ -30,14 +30,21 @@
               class="post-title-input"
               maxlength="30"
               placeholder="Post Title"
+              required
             />
           </div>
           <div class="des-box">
             <label class="post-description-label">Description : </label>
-            <textarea maxlength="200"></textarea>
+            <textarea maxlength="200" required></textarea>
           </div>
           <input type="submit" value="Share" class="submit" />
         </form>
+        <!-- start of loading box -->
+        <div class="loading-box">
+          <h3 class="loading-title">Please Wait...</h3>
+          <p class="loading-text">Your registration is in progress</p>
+        </div>
+        <!-- end of loading box -->
       </main>
       <!-- start of footer -->
       <site-footer></site-footer>
