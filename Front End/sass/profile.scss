@@ -5,6 +5,7 @@
   margin-top: 80px;
   padding: 10px;
   padding-right: 20px;
+  padding-bottom: 60px;
 
   &__header {
     @include sizing(100%, max-content);
@@ -124,5 +125,12 @@
     text-align: center;
     font-size: 2rem;
     color: $light-blue;
+  }
+
+  .post-container {
+    @include sizing(100%, max-content);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
   }
 }

@@ -10,6 +10,7 @@
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(#000, 0.4);
   @include flex(column, flex-start, flex-start);
+  margin: 0 auto;
 }
 
 .text-card {
@@ -36,7 +37,8 @@
   }
 
   &__body {
-    height: 100%;
+    width: 100%;
+    height: 185px !important;
     padding: 10px;
 
     &__paragraph {

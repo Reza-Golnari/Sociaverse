@@ -27,22 +27,13 @@ class imgCard extends HTMLElement {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
   connectedCallback() {
-    const titleLink = this.shadowRoot.querySelector(
-      ".text-card__header__title"
-    );
-    const bodyParagraph = this.shadowRoot.querySelector(
-      ".text-card__body__paragraph"
-    );
-    const footerUser = this.shadowRoot.querySelector(
-      ".text-card__footer__user"
-    );
-    const footerDate = this.shadowRoot.querySelector(
-      ".text-card__footer__date"
-    );
-    const footerTime = this.shadowRoot.querySelector(
-      ".text-card__footer__time"
-    );
+    const titleLink = this.shadowRoot.querySelector(".img-card__header__title");
+    const image = this.shadowRoot.querySelector(".img-card__img-box__img");
 
+    const footerUser = this.shadowRoot.querySelector(".img-card__footer__user");
+    const footerDate = this.shadowRoot.querySelector(".img-card__footer__date");
+    const footerTime = this.shadowRoot.querySelector(".img-card__footer__time");
+    console.log(this.getAttribute("post-title"));
     titleLink.textContent = this.getAttribute("post-title");
     titleLink.setAttribute(
       "href",
@@ -51,7 +42,11 @@ class imgCard extends HTMLElement {
       )}&postSlug=${this.getAttribute("post-slug")}`
     );
 
-    bodyParagraph.textContent = this.getAttribute("post-body");
+    image.setAttribute(
+      "src",
+      `http://localhost:8000${this.getAttribute("post-img")}`
+    );
+
     footerUser.textContent = this.getAttribute("post-user");
     footerUser.setAttribute(
       "href",

@@ -78,7 +78,6 @@ let fragment = document.createDocumentFragment();
 axios("http://localhost:8000/explore")
   .then((res) => {
     res.data.posts.forEach((post) => {
-      console.log(post);
       if (post.image) {
         //codes
       } else {

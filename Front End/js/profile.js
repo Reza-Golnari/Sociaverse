@@ -10,11 +10,15 @@ import { CreateBox } from "../components/main-menu/main-menu.js";
 import { CreateHamburgerMenu } from "../components/hamburger-menu/hamburger-menu.js";
 import { CreateFooter } from "../components/footer/footer.js";
 import { CreatePopUp } from "../components/pop up/pop-up.js";
+import { imgCard } from "../components/img card/img-card.js";
+import { textCard } from "../components/text card/text-card.js";
 
 window.customElements.define("pop-up", CreatePopUp);
 window.customElements.define("main-menu", CreateBox);
 window.customElements.define("site-footer", CreateFooter);
 window.customElements.define("hamburger-menu", CreateHamburgerMenu);
+window.customElements.define("img-card", imgCard);
+window.customElements.define("text-card", textCard);
 
 let mainMenu = $.querySelector("main-menu");
 let hamburgerMenu = $.querySelector("hamburger-menu");
@@ -72,7 +76,9 @@ const userEmailElem = $.querySelector(".user-email");
 const userBioElem = $.querySelector(".user-bio");
 const userImgElem = $.querySelector(".main__header__profile-box__profile-img");
 const token = findToken();
-let userName;
+let userName, card;
+const postContainer = $.querySelector(".post-container");
+const fragment = $.createDocumentFragment();
 
 document.addEventListener("DOMContentLoaded", async () => {
   await axios("http://localhost:8000/profile/get-current-user", {
@@ -82,7 +88,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   })
     .then((res) => res.data)
     .then((data) => {
-      console.log(data);
       userNameElem.textContent = data.username;
       userName = data.username;
       userEmailElem.textContent = data.email;
@@ -107,19 +112,29 @@ document.addEventListener("DOMContentLoaded", async () => {
   })
     .then((res) => res.data)
     .then((data) => {
-      console.log(data);
+      data.forEach((post) => {
+        if (post.image) {
+          console.log(post);
+          card = document.createElement("img-card");
+          card.setAttribute("post-id", post.id);
+          card.setAttribute("post-title", post.title);
+          card.setAttribute("post-user", post.user);
+          card.setAttribute("post-slug", post.slug);
+          card.setAttribute("post-date", post.created);
+          card.setAttribute("post-img", post.image);
+          fragment.append(card);
+        } else {
+          card = document.createElement("text-card");
+          card.setAttribute("post-id", post.id);
+          card.setAttribute("post-title", post.title);
+          card.setAttribute("post-body", post.body);
+          card.setAttribute("post-user", post.user);
+          card.setAttribute("post-slug", post.slug);
+          card.setAttribute("post-date", post.created);
+          fragment.append(card);
+        }
+      });
+      postContainer.append(fragment);
     })
     .catch((err) => console.log(err));
 });
-
-// const url = "http://localhost:8000/profile/post/create";
-// const data = {
-//   title: "Test Title aaaa",
-//   body: "Test Body ;sdlakfjas;dlkfjsad;flkjsadf;lksadjf;sadlfjsa;dfweqpruqwrpowrupweorpoqeruwqpeorqwproqweproqwurpoeqwrupqwruuopwirwpe qwperouwqrepuio",
-//   image: null,
-// };
-// const config = {
-//   headers: { Authorization: `Bearer ${token}` },
-// };
-
-// axios.post(url, data, config).then((res) => console.log(res));
