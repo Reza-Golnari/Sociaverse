@@ -119,10 +119,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         card.setAttribute("post-user", post.user);
         card.setAttribute("post-slug", post.slug);
         card.setAttribute("post-date", post.created);
-        fragment.append(card);
         if (post.image) {
           card.setAttribute("post-img", post.image);
         }
+        fragment.append(card);
       });
       postContainer.append(fragment);
     })

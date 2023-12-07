@@ -78,18 +78,16 @@ let fragment = document.createDocumentFragment();
 axios("http://localhost:8000/explore")
   .then((res) => {
     res.data.posts.forEach((post) => {
+      card = document.createElement("img-card");
+      card.setAttribute("post-id", post.id);
+      card.setAttribute("post-title", post.title);
+      card.setAttribute("post-user", post.user);
+      card.setAttribute("post-slug", post.slug);
+      card.setAttribute("post-date", post.created);
       if (post.image) {
-        //codes
-      } else {
-        card = document.createElement("text-card");
-        card.setAttribute("post-id", post.id);
-        card.setAttribute("post-title", post.title);
-        card.setAttribute("post-body", post.body);
-        card.setAttribute("post-user", post.user);
-        card.setAttribute("post-slug", post.slug);
-        card.setAttribute("post-date", post.created);
-        fragment.append(card);
+        card.setAttribute("post-img", post.image);
       }
+      fragment.append(card);
     });
     cardContainer.append(fragment);
   })
