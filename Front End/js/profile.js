@@ -81,6 +81,10 @@ const postContainer = $.querySelector(".post-container");
 const fragment = $.createDocumentFragment();
 
 document.addEventListener("DOMContentLoaded", async () => {
+  if (location.search) {
+    document.querySelector(".edit").style.display = "none";
+    document.querySelector(".create").style.display = "none";
+  }
   await axios("http://localhost:8000/profile/get-current-user", {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -126,5 +130,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
       postContainer.append(fragment);
     })
-    .catch((err) => {});
+    .catch((err) => {
+      document.querySelector(".no-post").style.display = "block";
+    });
 });
