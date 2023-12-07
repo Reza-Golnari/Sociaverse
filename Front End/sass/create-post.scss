@@ -119,3 +119,23 @@
     animation: showAlert 6s ease-in-out backwards;
   }
 }
+
+input[type="file"]::file-selector-button {
+  padding: 10px 15px;
+  margin-right: 5px;
+  background: none;
+  border: none;
+  outline: none;
+  border: 2px solid $light-blue;
+  border-radius: 5px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-family: "Roboto";
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: $light-blue;
+    color: $light;
+  }
+}
