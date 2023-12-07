@@ -60,10 +60,8 @@ logOutBtnHandler(
   hamburgerLogoutClick
 );
 
-const container = document.querySelector(".container");
-const popUp = document
-  .querySelector("pop-up")
-  .shadowRoot.querySelector(".pop-up");
+const container = $.querySelector(".container");
+const popUp = $.querySelector("pop-up").shadowRoot.querySelector(".pop-up");
 let scroll;
 
 container.addEventListener("scroll", () => {
@@ -76,15 +74,19 @@ const userEmailElem = $.querySelector(".user-email");
 const userBioElem = $.querySelector(".user-bio");
 const userImgElem = $.querySelector(".main__header__profile-box__profile-img");
 const token = findToken();
-let userName, card;
+let userName, card, userId;
 const postContainer = $.querySelector(".post-container");
 const fragment = $.createDocumentFragment();
 
-document.addEventListener("DOMContentLoaded", async () => {
+$.addEventListener("DOMContentLoaded", async () => {
+  // ================== Check Url ===========================================
   if (location.search) {
-    document.querySelector(".edit").style.display = "none";
-    document.querySelector(".create").style.display = "none";
+    $.querySelector(".edit").style.display = "none";
+    $.querySelector(".create").style.display = "none";
+    $.querySelector(".follow").style.display = "flex";
+    $.querySelector(".unfollow").style.display = "flex";
   }
+  // =========================== Start Of Get User Data ============================
   await axios("http://localhost:8000/profile/get-current-user", {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -92,6 +94,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   })
     .then((res) => res.data)
     .then((data) => {
+      userId = data.id;
+      console.log(userId);
       userNameElem.textContent = data.username;
       userName = data.username;
       userEmailElem.textContent = data.email;
@@ -108,6 +112,21 @@ document.addEventListener("DOMContentLoaded", async () => {
     .catch((err) => {
       location.href = "http://127.0.0.1:5500/log-in.html";
     });
+  // =========================== End Of Get User Data ==============================
+
+  // =========================== Start Of Get Followers and Following ====================
+  await axios(`http://localhost:8000/profile/followers-following/${userName}`)
+    .then((res) => res.data)
+    .then((data) => {
+      $.querySelector(".followers-text").textContent = data.followers.length;
+      $.querySelector(".following-text").textContent = data.following.length;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  // =========================== End Of Get Followers and Following ======================
+
+  // =========================== Start Of Get User Posts ===========================
 
   await axios(`http://localhost:8000/profile/list_posts/${userName}`, {
     headers: {
@@ -116,8 +135,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   })
     .then((res) => res.data)
     .then((data) => {
+      $.querySelector(".posts-text").textContent = data.length;
       data.forEach((post) => {
-        card = document.createElement("img-card");
+        card = $.createElement("img-card");
         card.setAttribute("post-id", post.id);
         card.setAttribute("post-title", post.title);
         card.setAttribute("post-user", post.user);
@@ -131,6 +151,35 @@ document.addEventListener("DOMContentLoaded", async () => {
       postContainer.append(fragment);
     })
     .catch((err) => {
-      document.querySelector(".no-post").style.display = "block";
+      $.querySelector(".no-post").style.display = "block";
     });
+  // =========================== End Of Get User Posts =============================
+
+  // =========================== Start Of Follow And UnFollow ======================
+
+  const followBtn = $.querySelector(".follow");
+  const unFollowBtn = $.querySelector(".unfollow");
+
+  unFollowBtn.addEventListener("click", async () => {
+    await axios
+      .post(`http://localhost:8000/profile/Unfollow/${userId}`)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+
+  followBtn.addEventListener("click", async () => {
+    await axios
+      .post(`http://localhost:8000//profile/follow/${userId}`)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    // =========================== End Of Follow And UnFollow ========================
+  });
 });
