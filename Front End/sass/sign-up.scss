@@ -80,6 +80,8 @@ h2 {
     background-color: transparent;
     border-radius: 5px;
     transition: color, background-color 0.2s;
+    letter-spacing: 2px;
+    font-size: 1rem;
 
     &:hover {
       background-color: $light-green;

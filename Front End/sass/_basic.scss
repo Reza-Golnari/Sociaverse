@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
+// @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
 
 // color
 
@@ -14,13 +14,12 @@ $very-dark: #111417;
 
 // font
 
-// @font-face {
-//   font-family: "Roboto";
-//   src: url("../font/Roboto-Medium.ttf") format("ttf");
-// }
+@font-face {
+  font-family: Roboto;
+  src: url("../font/Roboto-Medium.ttf");
+}
 
-$font-roboto: "Roboto", sans-serif;
-
+$font-roboto: Roboto;
 // mixin
 
 @mixin flex($direction: row, $align: center, $justify: center) {
@@ -58,7 +57,7 @@ $font-roboto: "Roboto", sans-serif;
 
 body {
   position: relative;
-  font-family: $font-roboto;
+  font-family: "Roboto";
   @include sizing(100%, auto);
   overflow-x: hidden;
 }
@@ -66,7 +65,7 @@ body {
 .container {
   position: relative;
   @include sizing(100%, 100vh);
-  font-family: $font-roboto;
+  font-family: "Roboto";
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
@@ -76,4 +75,9 @@ body {
 }
 .blue-text {
   color: $light-blue;
+}
+
+input,
+button {
+  font-family: "Roboto";
 }

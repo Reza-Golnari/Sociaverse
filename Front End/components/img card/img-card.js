@@ -4,7 +4,7 @@ template.innerHTML = `
 <link rel="stylesheet" href="./components/img card/css/img-card.min.css">
     <div class="img-card card">
     <div class="img-card__img-box">
-      <img class="img-card__img-box__img" src="./pic/6-300x200.jpg" />
+      <img class="img-card__img-box__img" src="./pic/default-img.jpg" />
     </div>
     <div class="img-card__header">
       <a href="" class="img-card__header__title">
@@ -42,10 +42,12 @@ class imgCard extends HTMLElement {
       )}&postSlug=${this.getAttribute("post-slug")}`
     );
 
-    image.setAttribute(
-      "src",
-      `http://localhost:8000${this.getAttribute("post-img")}`
-    );
+    if (this.getAttribute("post-img")) {
+      image.setAttribute(
+        "src",
+        `http://localhost:8000${this.getAttribute("post-img")}`
+      );
+    }
 
     footerUser.textContent = this.getAttribute("post-user");
     footerUser.setAttribute(

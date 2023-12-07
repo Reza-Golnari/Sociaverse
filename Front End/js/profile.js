@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     })
     .catch((err) => {
-      console.log(err);
+      location.href = "http://127.0.0.1:5500/log-in.html";
     });
 
   await axios(`http://localhost:8000/profile/list_posts/${userName}`, {
@@ -113,28 +113,18 @@ document.addEventListener("DOMContentLoaded", async () => {
     .then((res) => res.data)
     .then((data) => {
       data.forEach((post) => {
+        card = document.createElement("img-card");
+        card.setAttribute("post-id", post.id);
+        card.setAttribute("post-title", post.title);
+        card.setAttribute("post-user", post.user);
+        card.setAttribute("post-slug", post.slug);
+        card.setAttribute("post-date", post.created);
+        fragment.append(card);
         if (post.image) {
-          console.log(post);
-          card = document.createElement("img-card");
-          card.setAttribute("post-id", post.id);
-          card.setAttribute("post-title", post.title);
-          card.setAttribute("post-user", post.user);
-          card.setAttribute("post-slug", post.slug);
-          card.setAttribute("post-date", post.created);
           card.setAttribute("post-img", post.image);
-          fragment.append(card);
-        } else {
-          card = document.createElement("text-card");
-          card.setAttribute("post-id", post.id);
-          card.setAttribute("post-title", post.title);
-          card.setAttribute("post-body", post.body);
-          card.setAttribute("post-user", post.user);
-          card.setAttribute("post-slug", post.slug);
-          card.setAttribute("post-date", post.created);
-          fragment.append(card);
         }
       });
       postContainer.append(fragment);
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {});
 });
