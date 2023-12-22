@@ -1,5 +1,7 @@
 const $ = document;
 
+const BASEURL = "http://localhost:8000/";
+
 // give active or err to loading box
 function showMessage(flag, msg, box, title, text) {
   if (flag === "loading") {
@@ -215,4 +217,5 @@ export {
   foundRoute,
   popUpHandler,
   findToken,
+  BASEURL,
 };

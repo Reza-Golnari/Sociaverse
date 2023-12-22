@@ -6,6 +6,7 @@ import {
   isLoggedIn,
   sendRefreshToken,
   logOutBtnHandler,
+  BASEURL,
 } from "./basic.js";
 
 import { CreateBox } from "../components/main-menu/main-menu.js";
@@ -109,7 +110,7 @@ function checkInputs() {
 // send data to the api
 formBtn.addEventListener("click", async () => {
   if (checkInputs()) {
-    let url = "http://localhost:8000/accounts/api/token/";
+    let url = `${BASEURL}accounts/api/token/`;
 
     let header = {
       "Content-Type": "application/json",

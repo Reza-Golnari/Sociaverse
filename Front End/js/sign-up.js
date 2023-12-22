@@ -6,6 +6,7 @@ import {
   isLoggedIn,
   sendRefreshToken,
   logOutBtnHandler,
+  BASEURL,
 } from "./basic.js";
 import { CreateBox } from "../components/main-menu/main-menu.js";
 import { CreateHamburgerMenu } from "../components/hamburger-menu/hamburger-menu.js";
@@ -65,7 +66,7 @@ inputList.forEach((input) => {
 // set event for btn
 formBtn.addEventListener("click", (event) => {
   if (checkInputs()) {
-    const url = "http://localhost:8000/accounts/register/";
+    const url = `${BASEURL}accounts/register/`;
     const header = {
       "Content-Type": "application/json",
     };
@@ -86,7 +87,7 @@ formBtn.addEventListener("click", (event) => {
           loadingBoxTitle,
           loadingBoxText
         );
-        location.href = "http://127.0.0.1:5500/log-in.html";
+        location.href = `http://127.0.0.1:5500/log-in.html`;
       })
       .catch((err) => {
         let errorData = err.response.data;

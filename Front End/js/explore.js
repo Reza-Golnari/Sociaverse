@@ -4,6 +4,7 @@ import {
   sendRefreshToken,
   logOutBtnHandler,
   popUpHandler,
+  BASEURL,
 } from "./basic.js";
 
 import { CreateBox } from "../components/main-menu/main-menu.js";
@@ -75,7 +76,7 @@ container.addEventListener("scroll", () => {
 
 let fragment = document.createDocumentFragment();
 
-axios("http://localhost:8000/explore")
+axios(`${BASEURL}explore`)
   .then((res) => {
     res.data.posts.forEach((post) => {
       card = document.createElement("img-card");

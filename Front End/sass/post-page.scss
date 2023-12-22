@@ -1,0 +1,148 @@
+@import "basic";
+
+.main {
+  @include sizing(1000px, max-content);
+  margin: 100px auto;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &__img {
+      width: 500px;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+  }
+
+  &__title {
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  &__article {
+    @include flex(column, flex-start, center);
+    row-gap: 10px;
+    margin-top: 20px;
+    &__paragraph {
+      &::first-letter {
+        padding-left: 10px;
+      }
+      line-height: 23px;
+    }
+    &__info {
+      display: flex;
+      align-items: center;
+      column-gap: 20px;
+
+      &__user {
+        color: $dark;
+        font-weight: 900;
+      }
+
+      &__create {
+        min-width: max-content;
+        opacity: 0.7;
+        font-weight: 900;
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        column-gap: 5px;
+
+        svg {
+          width: 25px;
+        }
+      }
+
+      &__create-time {
+        opacity: 0.7;
+        display: flex;
+        align-items: center;
+        font-weight: 900;
+        column-gap: 5px;
+
+        svg {
+          width: 25px;
+        }
+      }
+
+      &__like {
+        display: flex;
+        align-items: center;
+        column-gap: 5px;
+
+        &__icon {
+          cursor: pointer;
+          color: #eb3b5a;
+          opacity: 0.5;
+          filter: drop-shadow(0 0 5px #eb3b5a);
+          transition: color 1s;
+
+          &.active {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  .comment-container {
+    margin-top: 50px;
+    @include sizing(100%, max-content);
+    @include flex(column);
+
+    &__header {
+      @include sizing(100%, max-content);
+      @include flex(column);
+      row-gap: 20px;
+      max-width: 600px;
+
+      &__title {
+        font-size: 2rem;
+      }
+
+      &__new-comment {
+        @include sizing(100%, max-content);
+        @include flex(column);
+        row-gap: 15px;
+
+        &__textarea {
+          all: unset;
+          resize: none;
+          @include sizing(100%, 100px);
+          box-shadow: 0 2px 15px rgba(#000000, 0.2);
+          padding: 10px;
+          border-radius: 10px;
+          text-wrap: wrap;
+          word-wrap: break-word;
+          line-height: 23px;
+        }
+
+        &__comment-btn {
+          all: unset;
+          width: 100%;
+          text-align: center;
+          padding: 10px;
+          background-color: $light-green;
+          border-radius: 10px;
+          box-shadow: 0 2px 10px rgba(#000000, 0.2);
+          cursor: pointer;
+          transition: box-shadow 0.3s;
+
+          &:hover {
+            box-shadow: 0 2px 15px rgba(#000000, 0.3);
+          }
+        }
+      }
+    }
+  }
+}
+
+.main__article__info__like__icon {
+  cursor: pointer;
+  svg,
+  path {
+    pointer-events: none;
+  }
+}

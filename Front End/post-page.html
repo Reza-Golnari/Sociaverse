@@ -3,9 +3,117 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="./css/post-page.min.css" />
+    <link
+      rel="stylesheet"
+      href="./icon/fontawesome-free-6.4.0-web/css/all.min.css"
+    />
+    <title>SociaVerse | Post</title>
   </head>
   <body>
-    post
+    <div class="container">
+      <!-- start of nav -->
+      <main-menu></main-menu>
+      <hamburger-menu></hamburger-menu>
+      <!-- end of nav -->
+      <!------start of main ------>
+      <main class="main">
+        <div class="main__header">
+          <img src="./pic/default-img.jpg" class="main__header__img" />
+        </div>
+        <h1 class="main__title"></h1>
+        <article class="main__article">
+          <h3 class="main__article__title">Post Body</h3>
+          <p class="main__article__paragraph"></p>
+          <div class="main__article__info">
+            <a href="#" class="main__article__info__user"></a>
+            <span class="main__article__info__create">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z"
+                />
+              </svg>
+
+              <span class="main__article__info__create__date"></span>
+            </span>
+            <span class="main__article__info__create-time">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span class="main__article__info__create-time__time"></span>
+            </span>
+            <span class="main__article__info__like">
+              <span class="main__article__info__like__icon"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  viewBox="0 0 48 48"
+                >
+                  <path
+                    fill="currentColor"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="4"
+                    d="M15 8C8.925 8 4 12.925 4 19c0 11 13 21 20 23.326C31 40 44 30 44 19c0-6.075-4.925-11-11-11c-3.72 0-7.01 1.847-9 4.674A10.987 10.987 0 0 0 15 8Z"
+                  /></svg
+              ></span>
+              <span class="main__article__info__like__count"></span>
+            </span>
+          </div>
+        </article>
+        <section class="comment-container">
+          <div class="comment-container__header">
+            <h3 class="comment-container__header__title">
+              Co<span class="blue-text">mm</span>ents
+            </h3>
+            <div class="comment-container__header__new-comment">
+              <textarea
+                class="comment-container__header__new-comment__textarea"
+                placeholder="Write Your Comment Here ..."
+                maxlength="200"
+              ></textarea>
+              <button
+                class="comment-container__header__new-comment__comment-btn"
+              >
+                Submit
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+      <!------end of main ------>
+      <!-- start of footer -->
+      <site-footer></site-footer>
+      <!-- end of footer -->
+    </div>
+    <!-- start pop up btn -->
+    <pop-up></pop-up>
+    <!-- end pop up btn -->
+
+    <!-- scripts -->
+    <script src="./js/axios/axios.min.js"></script>
+    <script type="module" src="./js/post-page.js"></script>
   </body>
 </html>

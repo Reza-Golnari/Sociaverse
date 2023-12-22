@@ -5,6 +5,7 @@ import {
   logOutBtnHandler,
   popUpHandler,
   findToken,
+  BASEURL,
 } from "./basic.js";
 import { CreateBox } from "../components/main-menu/main-menu.js";
 import { CreateHamburgerMenu } from "../components/hamburger-menu/hamburger-menu.js";
@@ -83,7 +84,7 @@ form.addEventListener("submit", async (e) => {
   }
 
   await axios
-    .post("http://localhost:8000/profile/post/create", formData, {
+    .post(`${BASEURL}profile/post/create`, formData, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

@@ -5,6 +5,7 @@ import {
   logOutBtnHandler,
   popUpHandler,
   findToken,
+  BASEURL,
 } from "./basic.js";
 import { CreateBox } from "../components/main-menu/main-menu.js";
 import { CreateHamburgerMenu } from "../components/hamburger-menu/hamburger-menu.js";
@@ -75,7 +76,7 @@ const userImgElem = $.querySelector("#MainProfileImg");
 let userName;
 
 document.addEventListener("DOMContentLoaded", async () => {
-  await axios("http://localhost:8000/profile/get-current-user", {
+  await axios(`${BASEURL}profile/get-current-user`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

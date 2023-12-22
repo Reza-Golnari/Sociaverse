@@ -5,6 +5,7 @@ import {
   logOutBtnHandler,
   popUpHandler,
   findToken,
+  BASEURL,
 } from "./basic.js";
 import { CreateBox } from "../components/main-menu/main-menu.js";
 import { CreateHamburgerMenu } from "../components/hamburger-menu/hamburger-menu.js";
@@ -79,7 +80,7 @@ const postContainer = $.querySelector(".post-container");
 const fragment = $.createDocumentFragment();
 
 $.addEventListener("DOMContentLoaded", async () => {
-  // ================== Check Url ===========================================
+  // =========================== Check Url ===========================================
   if (location.search) {
     $.querySelector(".edit").style.display = "none";
     $.querySelector(".create").style.display = "none";
@@ -87,7 +88,7 @@ $.addEventListener("DOMContentLoaded", async () => {
     $.querySelector(".unfollow").style.display = "flex";
   }
   // =========================== Start Of Get User Data ============================
-  await axios("http://localhost:8000/profile/get-current-user", {
+  await axios(`${BASEURL}profile/get-current-user`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -115,7 +116,7 @@ $.addEventListener("DOMContentLoaded", async () => {
   // =========================== End Of Get User Data ==============================
 
   // =========================== Start Of Get Followers and Following ====================
-  await axios(`http://localhost:8000/profile/followers-following/${userName}`)
+  await axios(`${BASEURL}profile/followers-following/${userName}`)
     .then((res) => res.data)
     .then((data) => {
       $.querySelector(".followers-text").textContent = data.followers.length;
@@ -128,7 +129,7 @@ $.addEventListener("DOMContentLoaded", async () => {
 
   // =========================== Start Of Get User Posts ===========================
 
-  await axios(`http://localhost:8000/profile/list_posts/${userName}`, {
+  await axios(`${BASEURL}profile/list_posts/${userName}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -162,7 +163,11 @@ $.addEventListener("DOMContentLoaded", async () => {
 
   unFollowBtn.addEventListener("click", async () => {
     await axios
-      .post(`http://localhost:8000/profile/Unfollow/${userId}`)
+      .post(`${BASEURL}profile/Unfollow/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((res) => {
         console.log(res);
       })
@@ -173,7 +178,11 @@ $.addEventListener("DOMContentLoaded", async () => {
 
   followBtn.addEventListener("click", async () => {
     await axios
-      .post(`http://localhost:8000//profile/follow/${userId}`)
+      .post(`${BASEURL}profile/follow/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((res) => {
         console.log(res);
       })
