@@ -1,13 +1,13 @@
 @import "basic";
 
 .main {
-  @include sizing(1000px, max-content);
+  @include sizing(clamp(300px, 100%, 1000px), max-content);
   margin: 100px auto;
+  padding: 0 20px;
 
   &__header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex();
+    width: 100%;
     &__img {
       width: 500px;
       height: 400px;
@@ -135,6 +135,13 @@
           }
         }
       }
+    }
+    &__user-comments {
+      margin-top: 50px;
+      @include sizing(90%, max-content);
+      @include grid(1fr, auto);
+      row-gap: 15px;
+      width: clamp(300px, 90%, 100%);
     }
   }
 }

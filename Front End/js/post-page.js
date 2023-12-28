@@ -13,8 +13,10 @@ import { CreateFooter } from "../components/footer/footer.js";
 import { CreatePopUp } from "../components/pop up/pop-up.js";
 import { imgCard } from "../components/img card/img-card.js";
 import { textCard } from "../components/text card/text-card.js";
+import { Comment } from "../components/comment/comment.js";
 
 window.customElements.define("pop-up", CreatePopUp);
+window.customElements.define("post-comment", Comment);
 window.customElements.define("main-menu", CreateBox);
 window.customElements.define("site-footer", CreateFooter);
 window.customElements.define("hamburger-menu", CreateHamburgerMenu);
@@ -119,7 +121,6 @@ window.addEventListener("DOMContentLoaded", async () => {
     .then((res) => {
       if (res.status === 200) {
         post = new Post(res.data);
-        console.log(res.data);
       } else {
         location.href = "http://127.0.0.1:5500/404.html";
       }
@@ -158,11 +159,25 @@ window.addEventListener("DOMContentLoaded", async () => {
   postCreateElement.textContent = post.createDate;
   postTimeElement.textContent = post.createTime;
 
+  // ======================== comments =================
+  const commentContainer = $.querySelector(".comment-container__user-comments");
+  const fragment = $.createDocumentFragment();
+
+  post.comments.forEach((comment) => {
+    const newComment = $.createElement("post-comment");
+    newComment.setAttribute("comment-body", comment.body);
+    newComment.setAttribute("comment-user", comment.user);
+    newComment.setAttribute("id", comment.id);
+    newComment.setAttribute("post-id", post.id);
+    fragment.append(newComment);
+  });
+
+  commentContainer.appendChild(fragment);
+
   // ======================== Like ==========================
   const likeBtn = $.querySelector(".main__article__info__like__icon");
   const token = findToken();
   likeBtn.addEventListener("click", async () => {
-    console.log(post.postID);
     await axios.post(`${BASEURL}profile/like/${post.postID}`, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -180,31 +195,24 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   commentBtn.addEventListener("click", checkCommentValidation);
 
-  function checkCommentValidation() {
-    if (commentTextArea.value && commentTextArea.value.length <= 200) {
-      sendNewComment();
+  async function checkCommentValidation() {
+    if (commentTextArea.value && commentTextArea.value.length <= 230) {
+      await sendNewComment();
+      commentTextArea.value = "";
     }
   }
 
   async function sendNewComment() {
-    console.log(postID, postSlug);
-    await axios
-      .post(
-        `${BASEURL}profile/comment/create/${postID}/${postSlug}/`,
-        {
-          body: commentTextArea.value,
+    await axios.post(
+      `${BASEURL}profile/comment/create/${postID}/${postSlug}/`,
+      {
+        body: commentTextArea.value,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
         },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      }
+    );
   }
 });
