@@ -36,6 +36,7 @@ const hamburgerLogoutClose =
 const hamburgerLogoutClick =
   hamburgerMenu.shadowRoot.querySelector(".log-out-btn");
 
+const search = location.search;
 window.addEventListener("load", async () => {
   if (
     isLoggedIn(loginBtn, logoutBtn) &&
@@ -48,7 +49,6 @@ window.addEventListener("load", async () => {
     isLoggedIn(hamburgerLogInBtn, hamburgerLogOutBtn);
   }
 });
-
 logOutBtnHandler(logoutBtn, logoutBox, logoutClose, logOutClick);
 
 logOutBtnHandler(
@@ -69,32 +69,91 @@ container.addEventListener("scroll", () => {
   popUpHandler(popUp, scroll);
 });
 
-const imgInput = document.querySelector(".img-input");
-const titleInput = document.querySelector(".post-title-input");
-const desInput = document.querySelector("textarea");
-const form = document.querySelector("form");
+window.addEventListener("DOMContentLoaded", async () => {
+  const imgInput = document.querySelector(".img-input");
+  const titleInput = document.querySelector(".post-title-input");
+  const desInput = document.querySelector("textarea");
+  const form = document.querySelector("form");
+  const formBtn = document.querySelector(".submit");
+  const formTitle = document.querySelector("h2");
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const formData = new FormData();
-  formData.append("title", titleInput.value);
-  formData.append("body", desInput.value);
-  if (imgInput.files[0]) {
-    formData.append("image", imgInput.files[0]);
-  }
+  if (search) {
+    formTitle.textContent = formTitle.textContent.replace("Share", "Update");
+    formBtn.value = "Update";
+    const searchArray = search.slice(1, search.length).split("&");
+    const postID = searchArray[0].split("=")[1];
+    const postSlug = searchArray[1].split("=")[1];
+    await axios(`${BASEURL}profile/post/${postID}/${postSlug}/`)
+      .then((res) => {
+        if (res.status === 200) {
+          const post = res.data.post;
+          titleInput.value = post.title;
+          desInput.value = post.body;
+        } else {
+          location.href = "http://127.0.0.1:5500/404.html";
+        }
+      })
+      .catch(() => {
+        location.href = "http://127.0.0.1:5500/404.html";
+      });
 
-  await axios
-    .post(`${BASEURL}profile/post/create`, formData, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-    .then((res) => {
-      imgInput.files = null;
-      titleInput.value = "";
-      desInput.value = "";
-    })
-    .catch((err) => {
-      console.log(err);
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (
+        titleInput.value &&
+        titleInput.value.length >= 3 &&
+        desInput.value &&
+        desInput.value.length >= 3 &&
+        desInput.value.length < 200 &&
+        titleInput.value.length < 50
+      ) {
+        const formData = new FormData();
+        formData.append("title", titleInput.value);
+        formData.append("body", desInput.value);
+        if (imgInput.files[0]) {
+          formData.append("image", imgInput.files[0]);
+        }
+
+        await axios
+          .put(`${BASEURL}profile/update/${postID}/`, formData, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then((res) => console.log(res))
+          .catch((err) => console.log(err));
+      }
     });
+  } else {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (
+        titleInput.value &&
+        titleInput.value.length >= 3 &&
+        desInput.value &&
+        desInput.value.length >= 3 &&
+        desInput.value.length < 200 &&
+        titleInput.value.length < 50
+      ) {
+        const formData = new FormData();
+        formData.append("title", titleInput.value);
+        formData.append("body", desInput.value);
+        if (imgInput.files[0]) {
+          formData.append("image", imgInput.files[0]);
+        }
+
+        await axios
+          .post(`${BASEURL}profile/post/create`, formData, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then(() => {
+            imgInput.files = null;
+            titleInput.value = "";
+            desInput.value = "";
+          });
+      }
+    });
+  }
 });

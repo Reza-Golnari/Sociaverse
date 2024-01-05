@@ -125,7 +125,7 @@ window.addEventListener("DOMContentLoaded", async () => {
         location.href = "http://127.0.0.1:5500/404.html";
       }
     })
-    .catch((err) => {
+    .catch(() => {
       location.href = "http://127.0.0.1:5500/404.html";
     });
 
@@ -178,11 +178,14 @@ window.addEventListener("DOMContentLoaded", async () => {
   const likeBtn = $.querySelector(".main__article__info__like__icon");
   const token = findToken();
   likeBtn.addEventListener("click", async () => {
-    await axios.post(`${BASEURL}profile/like/${post.postID}`, {
+    console.log(post.postID);
+    await axios(`${BASEURL}profile/like/${post.postID}/`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-    });
+    })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   });
 
   // ======================== Create New Comment ===========

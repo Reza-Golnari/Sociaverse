@@ -121,9 +121,6 @@ $.addEventListener("DOMContentLoaded", async () => {
     .then((data) => {
       $.querySelector(".followers-text").textContent = data.followers.length;
       $.querySelector(".following-text").textContent = data.following.length;
-    })
-    .catch((err) => {
-      console.log(err);
     });
   // =========================== End Of Get Followers and Following ======================
 
@@ -144,6 +141,7 @@ $.addEventListener("DOMContentLoaded", async () => {
         card.setAttribute("post-user", post.user);
         card.setAttribute("post-slug", post.slug);
         card.setAttribute("post-date", post.created);
+        card.setAttribute("updatable", true);
         if (post.image) {
           card.setAttribute("post-img", post.image);
         }
@@ -162,33 +160,19 @@ $.addEventListener("DOMContentLoaded", async () => {
   const unFollowBtn = $.querySelector(".unfollow");
 
   unFollowBtn.addEventListener("click", async () => {
-    await axios
-      .post(`${BASEURL}profile/Unfollow/${userId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    await axios.post(`${BASEURL}profile/Unfollow/${userId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
   });
 
   followBtn.addEventListener("click", async () => {
-    await axios
-      .post(`${BASEURL}profile/follow/${userId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    await axios.post(`${BASEURL}profile/follow/${userId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     // =========================== End Of Follow And UnFollow ========================
   });
 });

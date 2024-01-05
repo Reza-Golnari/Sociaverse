@@ -17,6 +17,9 @@ template.innerHTML = `
       <p class="img-card__footer__date">2023-04-12</p>
       <p class="img-card__footer__time">12:04</p>
     </div>
+    <a class="update-box">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M4 18q-.825 0-1.412-.587T2 16V5q0-.825.588-1.412T4 3h7q.425 0 .713.288T12 4q0 .425-.288.713T11 5H4v11h16v-2q0-.425.288-.712T21 13q.425 0 .713.288T22 14v2q0 .825-.587 1.413T20 18h-3l.7.7q.15.15.225.338t.075.387V20q0 .425-.288.712T17 21H7q-.425 0-.712-.288T6 20v-.575q0-.2.075-.387T6.3 18.7L7 18H4Zm10-6.825V4q0-.425.288-.712T15 3q.425 0 .713.288T16 4v7.175L17.9 9.3q.275-.275.688-.288t.712.288q.275.275.275.7t-.275.7L15 15l-4.3-4.3q-.275-.275-.287-.687T10.7 9.3q.275-.275.7-.275t.7.275l1.9 1.875Z"/></svg>
+    </a>
   </div>
 `;
 
@@ -33,7 +36,6 @@ class imgCard extends HTMLElement {
     const footerUser = this.shadowRoot.querySelector(".img-card__footer__user");
     const footerDate = this.shadowRoot.querySelector(".img-card__footer__date");
     const footerTime = this.shadowRoot.querySelector(".img-card__footer__time");
-    console.log(this.getAttribute("post-title"));
     titleLink.textContent = this.getAttribute("post-title");
     titleLink.setAttribute(
       "href",
@@ -59,6 +61,16 @@ class imgCard extends HTMLElement {
     const dateArray = fullDate.split("T");
     footerDate.textContent = dateArray[0];
     footerTime.textContent = dateArray[1].slice(0, 5);
+
+    const updatable = this.getAttribute("updatable");
+    const updateBtn = this.shadowRoot.querySelector(".update-box");
+
+    if (updatable) {
+      updateBtn.style.display = "flex";
+      updateBtn.href = `http://127.0.0.1:5500/create-post.html?postID=${this.getAttribute(
+        "post-id"
+      )}&postSlug=${this.getAttribute("post-slug")}`;
+    }
   }
 }
 

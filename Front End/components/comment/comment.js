@@ -70,12 +70,14 @@ class Comment extends HTMLElement {
             }
           )
           .then((res) => {
-            console.log(res)
+            console.log(res);
           })
           .catch((err) => {
             console.log(err);
+          })
+          .finally(() => {
+            replyBox.classList.remove("show");
           });
-        replyBox.classList.remove("show");
       } else {
         replyBox.classList.remove("show");
       }
