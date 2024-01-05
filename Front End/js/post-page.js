@@ -179,12 +179,19 @@ window.addEventListener("DOMContentLoaded", async () => {
   const token = findToken();
   likeBtn.addEventListener("click", async () => {
     console.log(post.postID);
-    await axios(`${BASEURL}profile/like/${post.postID}/`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((res) => console.log(res))
+    await axios
+      .post(
+        `${BASEURL}profile/like/${post.postID}/`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then(async () => {
+        location.reload();
+      })
       .catch((err) => console.log(err));
   });
 
